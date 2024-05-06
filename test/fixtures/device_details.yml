@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deviceId: MyString
+  deviceType: MyString
+  deviceName: MyString
+  advertisingId: MyString
+  versionName: MyString
+  versionCode: MyString
+  utmSource: MyString
+  utmMedium: MyString
+  utmTerm: MyString
+  utmContent: MyString
+  utmCampaign: MyString
+  referrerUrl: MyString
+
+two:
+  deviceId: MyString
+  deviceType: MyString
+  deviceName: MyString
+  advertisingId: MyString
+  versionName: MyString
+  versionCode: MyString
+  utmSource: MyString
+  utmMedium: MyString
+  utmTerm: MyString
+  utmContent: MyString
+  utmCampaign: MyString
+  referrerUrl: MyString

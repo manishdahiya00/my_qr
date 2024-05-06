@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codeData: MyString
+  codeType: MyString
+  deviceId: MyString
+  securityToken: MyString
+  device_detail_id: MyString
+
+two:
+  codeData: MyString
+  codeType: MyString
+  deviceId: MyString
+  securityToken: MyString
+  device_detail_id: MyString

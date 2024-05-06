@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deviceId: MyString
+  versionName: MyString
+  versionCode: MyString
+  securityToken: MyString
+
+two:
+  deviceId: MyString
+  versionName: MyString
+  versionCode: MyString
+  securityToken: MyString
