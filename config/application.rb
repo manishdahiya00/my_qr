@@ -11,8 +11,6 @@ module MyQr
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
-    config.web_console.whitelisted_ips = '192.168.1.8'
-
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
@@ -28,5 +26,7 @@ module MyQr
     # # Auto-load API and its subdirectories
     # config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     # config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+    config.time_zone = 'New Delhi'
+    config.active_record.default_timezone = :local
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_06_061040) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_20_050331) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -60,19 +60,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_061040) do
     t.string "forceUpdate"
   end
 
-  create_table "contact_qr_codes", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "phone"
-    t.string "email"
-    t.string "organization"
-    t.string "url"
-    t.string "note"
-    t.string "device_detail_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "device_details", force: :cascade do |t|
     t.string "deviceId"
     t.string "deviceType"
@@ -118,7 +105,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_061040) do
     t.string "securityToken"
     t.string "versionName"
     t.string "versionCode"
-    t.string "data"
+    t.string "codeData"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -130,6 +117,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_061040) do
     t.datetime "updated_at", null: false
     t.string "device_detail_id"
     t.string "qrType"
+  end
+
+  create_table "redeem_histories", force: :cascade do |t|
+    t.string "title"
+    t.string "subtitle"
+    t.string "coins"
+    t.string "user_detail_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_details", force: :cascade do |t|
@@ -155,7 +151,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_061040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "device_detail_id"
-    t.string "advertising_id"
+    t.string "securityToken"
+    t.string "refCode"
+    t.integer "wallet_balance", default: 0
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

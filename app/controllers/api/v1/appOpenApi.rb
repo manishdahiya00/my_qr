@@ -17,6 +17,8 @@ module API
           optional :socialEmail, type: String, allow_blank: false, default: ""
           optional :socialImgUrl, type: String, allow_blank: false, default: ""
           optional :forceUpdate, type: String, allow_blank: false, default: ""
+          requires :userId, type: String, allow_blank: true
+
         end
 
         post do
@@ -31,7 +33,18 @@ module API
               )
               { status: 200, message: "Success",socialName: @app_open.socialName, socialEmail: @app_open.socialEmail,socialImgUrl: @app_open.socialImgUrl,appUrl:@app_open.app_url,forceUpdate:@app_open.forceUpdate }
             end
-            { status: 200, message: "Success", socialName: @app_open.socialName, socialEmail: @app_open.socialEmail,socialImgUrl: @app_open.socialImgUrl,appUrl:@app_open.app_url,forceUpdate:@app_open.forceUpdate}
+            @user = UserDetail.find_by(securityToken:params[:securityToken])
+            if @user
+              @app = AppOpen.find_by(securityToken: params[:securityToken])
+              @new_app_open = @app.update(
+                socialName: @user.socialName,
+                socialEmail: @user.socialEmail,
+                socialImgUrl:@user.socialImgUrl
+              )
+              { status: 200, message: "Success", socialName: @app.socialName, socialEmail: @app.socialEmail,socialImgUrl: @app.socialImgUrl,appUrl:@app.app_url,forceUpdate:@app.forceUpdate}
+            else
+            { status: 200, message: "No User Found", socialName: "" ,socialEmail: "",socialImgUrl: "",appUrl: "",forceUpdate:@app_open.forceUpdate}
+            end
           rescue => e
             { message: "Error", status: 500, error: e }
           end

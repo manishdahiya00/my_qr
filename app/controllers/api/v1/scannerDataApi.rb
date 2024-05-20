@@ -6,6 +6,7 @@ module API
       version :v1
 
       resources :scannerData do
+        desc "Create Qr Code History"
         params do
           requires :deviceId,type:String,allow_blank: false
           requires :securityToken,type:String,allow_blank: false
@@ -13,6 +14,8 @@ module API
           requires :versionCode,type:String,allow_blank: false
           requires :data,type:String,allow_blank: false
           requires :qrType,type:String,allow_blank: false
+          requires :userId, type: String, allow_blank: true
+
         end
 
         post do
@@ -28,7 +31,7 @@ module API
               securityToken: params[:securityToken],
               versionName: params[:versionName],
               versionCode: params[:versionCode],
-              data: params[:data])
+              codeData: params[:data])
 
             {status:200,message:"Success"}
           rescue Exception => e

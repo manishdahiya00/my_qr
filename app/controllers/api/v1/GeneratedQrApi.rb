@@ -6,7 +6,7 @@ module API
       prefix :api
 
       resources :qrCodeData do
-
+        desc "Save Qr Code Data and Create History"
         params do
           requires :deviceId,type: String, allow_blank: false
           requires :securityToken,type: String, allow_blank: false
@@ -15,13 +15,15 @@ module API
           requires :codeImage,type: File,allow_blank: false
           requires :codeData,type: String, allow_blank: false
           requires :qrType,type:String,allow_blank: false
+          requires :userId, type: String, allow_blank: true
+
         end
 
         post do
           begin
             @device_details = DeviceDetail.find_by(deviceId:params[:deviceId],security_token: params[:securityToken])
             @recently_added = @device_details.recently_added.create(
-                title:params[:codeType],
+                title:params[:qrType],
                 subtitle:params[:codeData],
                 qrType: params[:qrType])
             codeImage = ActionDispatch::Http::UploadedFile.new(params[:codeImage])
@@ -35,7 +37,7 @@ module API
                 device_detail_id: @device_details.id,
                 codeImage: codeImage
               )
-            {status:200,message:"Success"}
+            {status:200,message:"Success",qrId: @generated_qr.id}
             rescue Exception => e
             {status:500,message:e.message}
           end
