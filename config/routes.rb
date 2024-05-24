@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root "main#index"
+  get "/invite/:refCode" => "main#invite"
+
 
   get "/admin" => "admin/login#new"
   post "/admin" => "admin/login#login"
