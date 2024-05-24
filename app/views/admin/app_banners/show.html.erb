@@ -1,0 +1,64 @@
+<%= stylesheet_link_tag "adminIndex" %>
+  <h1>App Banner</h1>
+<div class="wrapper">
+    <% if @appBanner %>
+  <div class="table">
+    <div class="row header">
+      <div class="cell">
+        Id
+      </div>
+      <div class="cell">
+        Image Url
+      </div>
+       <div class="cell">
+        Action Url
+      </div>
+       <div class="cell">
+        Status
+      </div>
+       <div class="cell">
+        Created At
+      </div>
+      <div class="cell">
+        Updated At
+      </div>
+      <div class="cell">Action</div>
+
+    </div>
+    
+      <div class="cell" data-title="id">
+        <%= @appBanner.id %>
+      </div>
+      <div class="cell" data-title="deviceName">
+       <a href="<%= @appBanner.imgUrl %>"><%= @appBanner.imgUrl[0,50] + "..." %> </a>
+      </div>
+      <div class="cell" data-title="advertisingId">
+        <%= @appBanner.actionUrl %>
+      </div>
+       <div class="cell" data-title="actionUrl">
+       <% if @appBanner.status == false %>
+         <p>❌</p>
+         <% else %>
+         <p>✔️</p>
+         <% end %>
+      </div>
+        <div class="cell" data-title="id">
+        <%= @appBanner.created_at %>
+      </div>
+      <div class="cell" data-title="deviceName">
+       <%= @appBanner.updated_at %>
+      </div>
+        <div class="cell app-banner-action" data-title="Coins">
+                <a href="/admin/app_banners/<%= @appBanner.id %>/edit">Edit</a> |
+               <%= button_to 'Delete', admin_app_banner_path, method: :delete,data: {turbo_confirm: 'Are you sure?'},class:"delete-btn"%>
+
+
+        </div>
+  </div>
+
+  </div>
+   <% else %>
+    <h1 class="not-found">No Recently Added Found</h1>
+    <% end %>
+</div>
+

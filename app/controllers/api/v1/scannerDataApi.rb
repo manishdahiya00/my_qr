@@ -20,7 +20,11 @@ module API
 
         post do
           begin
-            @device_detail = DeviceDetail.find_by(deviceId: params[:deviceId],security_token: params[:securityToken])
+            if params[:userId] == "2"
+              @device_detail = DeviceDetail.find_by(deviceId:"12345678",security_token: params[:securityToken])
+            else
+              @device_detail = DeviceDetail.find_by(deviceId:params[:deviceId],security_token: params[:securityToken])
+            end
             @recently_added =  @device_detail.recently_added.create(
               title:params[:qrType],
               subtitle:params[:data],
@@ -35,7 +39,7 @@ module API
 
             {status:200,message:"Success"}
           rescue Exception => e
-            {status:500,message:e}
+            {status:500,message:"Internal Server Error",error:e}
           end
         end
 

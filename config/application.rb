@@ -26,6 +26,7 @@ module MyQr
     # # Auto-load API and its subdirectories
     # config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     # config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+    # config.autoload_paths += %W(#{config.root}/app/fields)
     config.time_zone = 'New Delhi'
     config.active_record.default_timezone = :local
   end

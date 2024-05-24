@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag "adminIndex" %>
+<h1>Edit App Banner</h1>
+<div class="wrapper">
+  <%= form_with(model:  @appBanner,url: admin_app_banner_path(@appBanner)) do |form| %>
+    <div class="table">
+      <div class="row header">
+        <div class="cell">Id</div>
+        <div class="cell">Image Url</div>
+        <div class="cell">Action Url</div>
+        <div class="cell">Status</div>
+        <div class="cell">Created At</div>
+        <div class="cell">Updated At</div>
+        <div class="cell">Action</div>
+      </div>
+      
+      <div class="row">
+        <div class="cell" data-title="id">
+          <%= @appBanner.id %>
+        </div>
+        <div class="cell" data-title="imgUrl">
+          <%= form.text_field :imgUrl, id: "imgUrl", value: @appBanner.imgUrl %>
+        </div>
+        <div class="cell" data-title="actionUrl">
+          <%= form.text_field :actionUrl, id: "actionUrl", value: @appBanner.actionUrl %>
+        </div>
+        <div class="cell" data-title="status">
+          <%= form.select :status,["true","false"] ,id: "status", value: @appBanner.status %>
+        </div>
+        <div class="cell" data-title="created_at">
+          <%= @appBanner.created_at %>
+        </div>
+        <div class="cell" data-title="updated_at">
+          <%= @appBanner.updated_at %>
+        </div>
+        <div class="cell" data-title="action">
+          <%= form.submit "Update",class:"action" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

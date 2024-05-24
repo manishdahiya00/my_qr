@@ -1,0 +1,47 @@
+<%= stylesheet_link_tag "adminIndex" %>
+<h1>New App Banner</h1>
+<div class="form-container ">
+  <%= form_with(model:  @appBanner,url:admin_app_banners_path) do |form| %>
+    <% if @appBanner.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@appBanner.errors.count, "error") %> prohibited this app banner from being saved:</h2>
+        <ul>
+          <% @appBanner.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :imgUrl %>
+      <%= form.text_field :imgUrl, id: "imgUrl" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :actionUrl %>
+      <%= form.text_field :actionUrl, id: "actionUrl" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.select :status, ["true", "false"], id: "status" %>
+    </div>
+
+    <% if @appBanner.persisted? %>
+      <div class="field">
+        <%= form.label :created_at %>
+        <span><%= @appBanner.created_at %></span>
+      </div>
+
+      <div class="field">
+        <%= form.label :updated_at %>
+        <span><%= @appBanner.updated_at %></span>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= form.submit "Create", class: "action" %>
+    </div>
+  <% end %>
+</div>

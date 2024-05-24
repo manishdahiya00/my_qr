@@ -31,10 +31,14 @@ module API
           end
           post do
             begin
-              @device_details = DeviceDetail.find_by(deviceId: params[:deviceId],advertisingId: params[:advertisingId])
+              if params[:userId] == "2"
+                @deviceDetails = DeviceDetail.find_by(deviceId: "12345678",security_token: params[:securityToken])
+              else
+                @deviceDetails = DeviceDetail.find_by(deviceId: params[:deviceId], advertisingId: params[:advertisingId])
+              end
               @user_detail = UserDetail.find_by(deviceId:params[:deviceId])
               if @user_detail.present?
-                {status:200,message:"Success",userId:@user_detail.id,securityToken: @device_details.security_token}
+                {status:200,message:"Success",userId:@user_detail.id,securityToken: @deviceDetails.security_token}
               else
                 @user_details = UserDetail.create(
                     deviceType: params[:deviceType],
@@ -55,26 +59,27 @@ module API
                     utmContent:params[:utmContent],
                     utmCampaign: params[:utmCampaign],
                     referrerUrl: params[:referrerUrl],
-                    device_detail_id: @device_details.id,
+                    device_detail_id: @deviceDetails.id,
                     oauth_response: params[:oauthResponse],
-                    securityToken: @device_details.security_token,
+                    securityToken: @deviceDetails.security_token,
                     refCode: SecureRandom.hex(6)
                   )
-
-
-                if @device_details.user_detail_id.presence == nil
+                puts  @user_details.wallet_balance
+                if @deviceDetails.user_detail_id.presence == nil
                   new_user_id = "#{@user_details.id}"
                 else
-                  new_user_id = "#{@device_details.user_detail_id}, #{@user_details.id}"
+                  new_user_id = "#{@deviceDetails.user_detail_id}, #{@user_details.id}"
                 end
-                    @device_details.update(user_detail_id: new_user_id)
-                  @redeem = @user_details.redeem_histories.create(
+                puts new_user_id
+                @deviceDetails.update(user_detail_id: new_user_id)
+                  @redeem = @user_details.transaction_histories.create(
                     title:"Signup Bonus",
                     subtitle:DateTime.now.strftime("%d/%m/%Y"),
                     coins:"5"
                 )
                 @user_details.update(wallet_balance: "5")
-                    {status:200,message:"Success",userId:@user_details.id,securityToken: @device_details.security_token}
+                    {status:200,message:"Success",userId:@user_details.id,securityToken: @deviceDetails.security_token}
+                puts @user_details.wallet_balance
               end
             rescue Exception => e
               {status:500,message: "Internal Server Error",error:e}

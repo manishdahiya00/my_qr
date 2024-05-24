@@ -9,7 +9,9 @@ module API
     mount API::V1::UserDetails
     mount API::V1::QrDataApi
     mount API::V1::HistoryApi
-    mount API::V1::RedeemHistoryApi
+    mount API::V1::TransactionHistoryApi
     mount API::V1::DefaultUser
+    mount API::V1::RewardList
+    mount API::V1::RedeemSubmit
   end
 end

@@ -1,0 +1,182 @@
+
+  .table {
+    margin: 50px 0 40px 0;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    display: table;
+  }
+  
+  a{
+    color: rgb(0, 0, 0);
+  }
+
+  .row {
+    display: table-row;
+  }
+  .row.header {
+    font-weight: 900;
+    color: #ffffff;
+    background: #2980b9;
+  }
+  .row.green {
+    background: #27ae60;
+  }
+  .row.blue {
+    background: #2980b9;
+  }
+  
+  .cell {
+    padding: 6px 12px;
+    display: table-cell;
+    font-size: 16px;
+  }
+
+.not-found{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.pending{
+  color: red;
+}
+.processing {
+  color: rgb(228, 228, 16);
+}
+.completed {
+  color: green;
+}
+.action{
+  padding: 5px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border-radius: 10%;
+  height: 40px;
+  width: 100px;
+  font-size: 18px;
+}
+
+#redeem_status,#app_banner_status {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.dropdown:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+#imgUrl,#actionUrl{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.new{
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.new-btn
+{
+  padding: 10px;
+  background-color: #27ae60;
+  color: white;
+  border-radius: 10px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+#error_explanation {
+  border: 2px solid #f00;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #fdd;
+}
+
+#error_explanation h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+#error_explanation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+.value {
+  display: block;
+  padding: 8px;
+  background-color: #e9e9e9;
+  border-radius: 4px;
+}
+
+.actions {
+  text-align: center;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #218838;
+}
+
+
+.delete-btn{
+  padding: 4px;
+  border: none;
+  font-size: 16px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.app-banner-action{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

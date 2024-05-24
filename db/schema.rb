@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_20_050331) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_23_080144) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_050331) do
     t.string "actionUrl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: false
   end
 
   create_table "app_opens", force: :cascade do |t|
@@ -57,7 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_050331) do
     t.string "socialName"
     t.string "socialEmail"
     t.string "socialImgUrl"
-    t.string "forceUpdate"
+    t.string "forceUpdate", default: "false"
   end
 
   create_table "device_details", force: :cascade do |t|
@@ -77,6 +78,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_050331) do
     t.datetime "updated_at", null: false
     t.string "security_token"
     t.string "user_detail_id", default: ""
+  end
+
+  create_table "device_details_user_details", id: false, force: :cascade do |t|
+    t.integer "device_detail_id", null: false
+    t.integer "user_detail_id", null: false
   end
 
   create_table "favourites", force: :cascade do |t|
@@ -100,6 +106,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_050331) do
     t.string "versionCode"
   end
 
+  create_table "managers", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "qr_data", force: :cascade do |t|
     t.string "device_detail_id"
     t.string "securityToken"
@@ -119,7 +132,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_050331) do
     t.string "qrType"
   end
 
-  create_table "redeem_histories", force: :cascade do |t|
+  create_table "redeems", force: :cascade do |t|
+    t.string "user_detail_id"
+    t.string "mobileNumber"
+    t.string "payCoins"
+    t.string "payAmount"
+    t.string "payType"
+    t.string "versionName"
+    t.string "versionCode"
+    t.string "status", default: "PENDING"
+    t.string "payVendor"
+    t.string "transVendor"
+    t.string "payId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transaction_histories", force: :cascade do |t|
     t.string "title"
     t.string "subtitle"
     t.string "coins"

@@ -19,7 +19,11 @@ module API
         end
         post do
           begin
-            @device_details = DeviceDetail.find_by(deviceId: params[:deviceId],security_token: params[:securityToken])
+            if params[:userId] == "2"
+              @device_details = DeviceDetail.find_by(deviceId:"12345678",security_token: params[:securityToken])
+            else
+              @device_details = DeviceDetail.find_by(deviceId:params[:deviceId],security_token: params[:securityToken])
+            end
             @generated_qr = GeneratedQr.find(params[:qrCodeId])
             @isFavourite = Favourite.find_by(qr_code_id: params[:qrCodeId],deviceId: params[:deviceId])
             if params[:addFavourite] == true

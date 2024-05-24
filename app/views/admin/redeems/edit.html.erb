@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag "adminIndex" %>
+<h1>Redeem History</h1>
+<div class="wrapper">
+    <% if @redeem %>
+      <div class="table">
+        <div class="row header">
+          <div class="cell">Id</div>
+          <div class="cell">Mobile Number</div>
+          <div class="cell">Coins</div>
+          <div class="cell">Amount</div>
+          <div class="cell">Pay Type</div>
+          <div class="cell">Status</div>
+          <div class="cell">Pay Vendor</div>
+          <div class="cell">Trans Vendor</div>
+          <div class="cell">Pay Id</div>
+          <div class="cell">Action</div>
+        </div>
+          <div class="row">
+            <div class="cell" data-title="Id"><%= @redeem.id %></div>
+            <div class="cell" data-title="Mobile Number"><%= @redeem.mobileNumber %></div>
+            <div class="cell" data-title="Coins"><%= @redeem.payCoins %></div>
+            <div class="cell" data-title="Amount"><%= @redeem.payAmount %></div>
+            <div class="cell" data-title="Pay Type"><%= @redeem.payType %></div>
+            <div class="cell" data-title="Pay Vendor"><%= @redeem.payVendor %></div>
+            <div class="cell" data-title="Trans Vendor"><%= @redeem.transVendor %></div>
+            <div class="cell" data-title="Pay Id"><%= @redeem.payId %></div>
+            <div class="cell" data-title="Status">
+              <%= form_with model: Redeem,url:admin_redeem_path(@redeem) ,method: :patch do |f| %>
+                <%= f.select :status, options_for_select(['PENDING', 'PROCESSING', 'COMPLETED'], @redeem.status),class:"dropdown" %>
+            </div>
+             <div class="cell" data-title="Pay Id">
+                   <%= f.submit 'Update' ,class:"action"%>
+                </div>  
+              <% end %>
+
+          </div>
+      </div>
+    <% else %>
+      <h1 class="not-found">No @redeem History Found</h1>
+    <% end %>
+</div>

@@ -1,0 +1,64 @@
+<%= stylesheet_link_tag "adminIndex" %>
+  <h1>App Banners</h1>
+  <div class="new">
+    <%= link_to "New App Banner",new_admin_app_banner_path,class:"new-btn" %>
+  </div>
+<div class="wrapper">
+    <% if @appBanners %>
+  <div class="table">
+    <div class="row header">
+      <div class="cell">
+        Id
+      </div>
+      <div class="cell">
+        Image Url
+      </div>
+       <div class="cell">
+        Action Url
+      </div>
+       <div class="cell">
+        Status
+      </div>
+      <div class="cell">
+        Created At
+      </div>
+      <div class="cell">
+       Updated At
+      </div>
+
+    </div>
+    
+   <% @appBanners.each do |banner| %>
+    <a href="/admin/app_banners/<%= banner.id %>" class="row">
+      <div class="cell" data-title="id">
+        <%= banner.id %>
+      </div>
+      <div class="cell" data-title="imgUrl">
+        <%= banner.imgUrl[0,40] + "..." %>
+      </div>
+      <div class="cell" data-title="actionUrl">
+        <%= banner.actionUrl %>
+      </div>
+       <div class="cell" data-title="actionUrl">
+       <% if banner.status == false %>
+         <p>❌</p>
+         <% else %>
+         <p>✔️</p>
+         <% end %>
+      </div>
+      <div class="cell" data-title="securityToken">
+        <%= banner.created_at %>
+      </div>
+      <div class="cell" data-title="advertisingId">
+        <%= banner.updated_at %>
+      </div>
+    </a>
+   <% end %>
+   
+  </div>
+  </div>
+   <% else %>
+    <h1 class="not-found">No User Found</h1>
+    <% end %>
+</div>
+

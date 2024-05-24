@@ -19,7 +19,11 @@ module API
         end
         post do
           begin
-            @device_detail = DeviceDetail.find_by(deviceId: params[:deviceId], security_token: params[:securityToken])
+            if params[:userId] == "2"
+              @device_details = DeviceDetail.find_by(deviceId:"12345678",security_token: params[:securityToken])
+            else
+              @device_details = DeviceDetail.find_by(deviceId:params[:deviceId],security_token: params[:securityToken])
+            end
             case params[:qrType]
             when "Scanned"
               @history = QrDatum.where(id: params[:qrId]).select(:id,:codeData).first
@@ -34,7 +38,7 @@ module API
             end
             { status: 200, message: "Success", history: @history || {}, image_url: @image , isFavourite: @isFavourite }
           rescue Exception => e
-            { status: 500, message: e.message }
+            {status:500,message:"Internal Server Error",error:e}
           end
         end
       end

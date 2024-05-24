@@ -1,0 +1,146 @@
+<%= stylesheet_link_tag "adminIndex" %>
+<h1>User Details</h1>
+<div class="wrapper">
+  <% if @userDetail %>
+    <div class="table">
+      <div class="row header">
+        <div class="cell">Id</div>
+        <div class="cell">Device Id</div>
+        <div class="cell">Device Type</div>
+        <div class="cell">Device Name</div>
+        <div class="cell">Social Type</div>
+      </div>
+      <div class="row">
+        <div class="cell" data-title="Id"><%= @userDetail.id %></div>
+        <div class="cell" data-title="Device Id">
+          <% device = DeviceDetail.find_by(deviceId: @userDetail.deviceId) %>
+          <a href="/admin/device_details/<%= device.id %>"><%= @userDetail.deviceId %></a>
+        </div>
+        <div class="cell" data-title="Device Type"><%= @userDetail.deviceType %></div>
+        <div class="cell" data-title="Device Name"><%= @userDetail.deviceName %></div>
+        <div class="cell" data-title="Social Type"><%= @userDetail.socialType %></div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="row header">
+        <div class="cell">Social Id</div>
+        <div class="cell">Social Name</div>
+        <div class="cell">Social Email</div>
+        <div class="cell">Social Image Url</div>
+        <div class="cell">Ref Code</div>
+      </div>
+      <div class="row">
+        <div class="cell" data-title="Social Id"><%= @userDetail.socialId %></div>
+        <div class="cell" data-title="Social Name"><%= @userDetail.socialName %></div>
+        <div class="cell" data-title="Social Email"><%= @userDetail.socialEmail %></div>
+        <div class="cell" data-title="Social Image Url">
+         <% if @userDetail.socialImgUrl %>
+          <a href="<%= @userDetail.socialImgUrl %>"><%= @userDetail.socialImgUrl[0, 50] + "..." %></a>
+         <% end %>
+        </div>
+        <div class="cell" data-title="Ref Code"><%= @userDetail.refCode %></div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="row header">
+        <div class="cell">Advertising Id</div>
+        <div class="cell">Version Name</div>
+        <div class="cell">Version Code</div>
+        <div class="cell">Utm Source</div>
+        <div class="cell">Utm Medium</div>
+      </div>
+      <div class="row">
+        <div class="cell" data-title="Advertising Id"><%= @userDetail.advertisingId %></div>
+        <div class="cell" data-title="Version Name"><%= @userDetail.versionName %></div>
+        <div class="cell" data-title="Version Code"><%= @userDetail.versionCode %></div>
+        <div class="cell" data-title="Utm Source"><%= @userDetail.utmSource %></div>
+        <div class="cell" data-title="Utm Medium"><%= @userDetail.utmMedium %></div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="row header">
+        <div class="cell">Utm Content</div>
+        <div class="cell">Utm Campaign</div>
+        <div class="cell">Referrer Url</div>
+        <div class="cell">Wallet Balance</div>
+      </div>
+      <div class="row">
+        <div class="cell" data-title="Utm Content"><%= @userDetail.utmContent %></div>
+        <div class="cell" data-title="Utm Campaign"><%= @userDetail.utmCampaign %></div>
+        <div class="cell" data-title="Referrer Url"><%= @userDetail.referrerUrl %></div>
+        <div class="cell" data-title="Wallet Balance"><%= @userDetail.wallet_balance %></div>
+      </div>
+    </div>
+
+  
+    <h3>Redeems</h3>
+    <% if @redeems %>
+      <div class="table">
+        <div class="row header">
+          <div class="cell">Id</div>
+          <div class="cell">Mobile Number</div>
+          <div class="cell">Coins</div>
+          <div class="cell">Amount</div>
+          <div class="cell">Pay Type</div>
+          <div class="cell">Status</div>
+          <div class="cell">Pay Vendor</div>
+          <div class="cell">Trans Vendor</div>
+          <div class="cell">Pay Id</div>
+          <div class="cell">Action</div>
+        </div>
+        <% @redeems.each do |redeem| %>
+          <div class="row">
+            <div class="cell" data-title="Id"><%= redeem.id %></div>
+            <div class="cell" data-title="Title"><%= redeem.mobileNumber %></div>
+            <div class="cell" data-title="Subtitle"><%= redeem.payCoins %></div>
+            <div class="cell" data-title="Coins"><%= redeem.payAmount %></div>
+            <div class="cell" data-title="Coins"><%= redeem.payType %></div>
+            <div class="cell" data-title="Coins">
+                <% if redeem.status == "PENDING" %>
+                <p class="pending"><%= redeem.status %></p>
+                <% elsif redeem.status == "PROCESSING" %>
+                 <p class="processing"><%= redeem.status %></p>
+                <% else %>
+                <p class="completed"><%= redeem.status %></p>
+                <% end %>
+            </div>
+            <div class="cell" data-title="Coins"><%= redeem.payVendor %></div>
+            <div class="cell" data-title="Coins"><%= redeem.transVendor %></div>
+            <div class="cell" data-title="Coins"><%= redeem.payId %></div>
+            <div class="cell" data-title="Coins">
+                <a href="/admin/redeems/<%= redeem.id %>/edit">Edit</a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <h1 class="not-found">No Transaction History</h1>
+    <% end %>
+    <h3>Transaction History</h3>
+      <% if @transactionHistories %>
+      <div class="table">
+        <div class="row header">
+          <div class="cell">Id</div>
+          <div class="cell">Title</div>
+          <div class="cell">Subtitle</div>
+          <div class="cell">Coins</div>
+        </div>
+        <% @transactionHistories.each do |history| %>
+          <div class="row">
+            <div class="cell" data-title="Id"><%= history.id %></div>
+            <div class="cell" data-title="Title"><%= history.title %></div>
+            <div class="cell" data-title="Subtitle"><%= history.subtitle %></div>
+            <div class="cell" data-title="Coins"><%= history.coins %></div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <h1 class="not-found">No Transaction History</h1>
+    <% end %>
+  <% else %>
+    <h1 class="not-found">No User Detail Found</h1>
+  <% end %>
+</div>

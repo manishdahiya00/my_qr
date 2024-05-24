@@ -17,6 +17,8 @@ module API
             if params[:userEmail] == "techmindgeeks@gmail.com" && params[:password] == "Slacker@123"
               @default_user = UserDetail.find_by(socialEmail: params[:userEmail])
               {status:200,message:"Success",userId:@default_user.id.to_s,securityToken:@default_user.securityToken}
+            else
+              {status:500,message:"Invalid User"}
             end
             rescue Exception => e
               {status:500,message: "Internal Server Error",error:e}
