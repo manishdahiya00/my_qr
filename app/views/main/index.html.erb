@@ -1,0 +1,163 @@
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: 100vh;
+}
+
+.text-content, .image-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.text-content {
+    width: 10px;
+}
+
+.text-content h2 {
+    font-size: 100px;
+    color: #2a9d8f;
+    margin: 0;
+    text-align: center;
+}
+
+.text-content h2 span {
+    font-size: 100px;
+    color: #000000;
+}
+
+.text-content p {
+    line-height: 50px;
+    letter-spacing: 0.5px;
+    font-size: 24px;
+    color: #555555;
+    text-align: center;
+}
+
+.img1 {
+    width: 100%;
+    border-radius: 10px;
+    height: 90vh;
+
+}
+
+.img2{
+    width: 120%;
+    border-radius: 10px;
+    height: 60vh;
+}
+
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
+
+footer p{
+    font-size: 22px;
+}
+
+.a-btn{
+    text-decoration: none;
+    background-color: #2a9d8f;
+    padding: 10px;
+    border-radius: 2px;
+    color: white;
+    font-size: 22px;
+}
+
+a{
+    text-decoration: underline;
+    padding: 10px;
+    color: white;
+    font-size: 22px;
+}
+
+
+</style>
+
+
+
+
+
+
+
+
+<header>
+    <div class="logo">
+        <%= image_tag "logo.png", alt: "MyQR Logo" %>
+        <h1>MyQR</h1>
+    </div>
+</header>
+<main>
+    <section class="scan-section">
+        <div class="text-content">
+            <h2>SCAN <span>QR CODE</span></h2>
+            <p>MyQR is your go-to solution for effortlessly scanning QR codes. Whether it's for accessing websites, making payments, or unlocking exclusive content, MyQR ensures a seamless experience every time.
+
+            </p>
+            <a class="a-btn" href="https://play.google.com/store/apps/details?id=com.bloomapp.android">READ MORE</a>
+        </div>
+        <div class="image-content">
+            <%= image_tag "img2.png", alt: "Scan QR Code",class:"img1" %>
+        </div>
+    </section>
+    <section class="fast-scan-section">
+        <div class="image-content">
+            <%= image_tag "img1.png", alt: "QR Code Scan Fast",class:"img2" %>
+        </div>
+        <div class="text-content">
+            <h2>QR CODE</h2>
+            <p>SCAN FAST WITH OUR APP</p>
+            <p>Download MyQR now and unlock the power of QR codes at your fingertips. Whether you're a business professional, a tech enthusiast, or just someone who loves convenience, MyQR is the perfect companion for all your scanning needs.</p>
+            <a class="a-btn" href="https://play.google.com/store/apps/details?id=com.bloomapp.android">SEE MORE</a>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>Get It On Google Play <a href="https://play.google.com/store/apps/details?id=com.bloomapp.android">Download Now</a></p>
+</footer>
