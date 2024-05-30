@@ -33,8 +33,14 @@ main {
     padding: 20px;
 }
 
+.span{
+    color: #2a9d8f;
+}
+
+
 section {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
@@ -42,7 +48,6 @@ section {
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    height: 100vh;
 }
 
 .text-content, .image-content {
@@ -53,10 +58,6 @@ section {
     flex-direction: column;
 }
 
-.text-content {
-    width: 10px;
-}
-
 .text-content h2 {
     font-size: 100px;
     color: #2a9d8f;
@@ -65,29 +66,22 @@ section {
 }
 
 .text-content h2 span {
-    font-size: 100px;
     color: #000000;
 }
 
 .text-content p {
-    line-height: 50px;
+    line-height: 1.5;
     letter-spacing: 0.5px;
     font-size: 24px;
     color: #555555;
     text-align: center;
+    max-width: 600px;
 }
 
-.img1 {
+.img1, .img2 {
     width: 100%;
     border-radius: 10px;
-    height: 90vh;
-
-}
-
-.img2{
-    width: 120%;
-    border-radius: 10px;
-    height: 60vh;
+    height: auto;
 }
 
 footer {
@@ -97,40 +91,139 @@ footer {
     padding: 10px;
 }
 
-footer p{
+footer p {
     font-size: 22px;
 }
 
-.a-btn{
+.a-btn {
     text-decoration: none;
     background-color: #2a9d8f;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 2px;
     color: white;
     font-size: 22px;
+    margin-top: 20px;
 }
 
-a{
+a {
     text-decoration: underline;
-    padding: 10px;
-    color: white;
+    color: white;   <link rel="icon" type="image/ico" href="img1.png">
+
     font-size: 22px;
 }
 
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .text-content h2 {
+        font-size: 80px;
+    }
 
+    .text-content p {
+        font-size: 20px;
+    }
+
+    .a-btn {
+        font-size: 20px;
+        padding: 8px 16px;
+    }
+
+    .img1, .img2 {
+        height: 70vh;
+    }
+}
+
+@media (max-width: 992px) {
+    section {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+
+    .text-content h2 {
+        font-size: 60px;
+    }
+
+    .text-content p {
+        font-size: 18px;
+    }
+
+    .a-btn {
+        font-size: 18px;
+        padding: 6px 12px;
+    }
+
+    .img1, .img2 {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    header .logo h1 {
+        font-size: 24px;
+    }
+
+    .text-content h2 {
+        font-size: 50px;
+    }
+
+    .text-content p {
+        font-size: 16px;
+    }
+
+    .a-btn {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+
+    footer p {
+        font-size: 18px;
+    }
+
+    .img1, .img2 {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    header .logo img {
+        width: 30px;
+        height: 30px;
+    }
+
+    header .logo h1 {
+        font-size: 20px;
+    }
+
+    .text-content h2 {
+        font-size: 40px;
+    }
+
+    .text-content p {
+        font-size: 14px;
+    }
+
+    .a-btn {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+
+    footer p {
+        font-size: 16px;
+    }
+
+    .img1, .img2 {
+        width: 100%;
+        height: auto;
+    }
+}
 </style>
-
-
-
-
-
-
-
 
 <header>
     <div class="logo">
         <%= image_tag "logo.png", alt: "MyQR Logo" %>
-        <h1>MyQR</h1>
+        <h1>ScansBuddy</h1>
     </div>
 </header>
 <main>
@@ -140,7 +233,7 @@ a{
             <p>MyQR is your go-to solution for effortlessly scanning QR codes. Whether it's for accessing websites, making payments, or unlocking exclusive content, MyQR ensures a seamless experience every time.
 
             </p>
-            <a class="a-btn" href="https://play.google.com/store/apps/details?id=com.bloomapp.android">READ MORE</a>
+            <a class="a-btn" href="https://play.google.com/store/apps/details?id=com.apps.scanbuddy">READ MORE</a>
         </div>
         <div class="image-content">
             <%= image_tag "img2.png", alt: "Scan QR Code",class:"img1" %>
@@ -154,10 +247,10 @@ a{
             <h2>QR CODE</h2>
             <p>SCAN FAST WITH OUR APP</p>
             <p>Download MyQR now and unlock the power of QR codes at your fingertips. Whether you're a business professional, a tech enthusiast, or just someone who loves convenience, MyQR is the perfect companion for all your scanning needs.</p>
-            <a class="a-btn" href="https://play.google.com/store/apps/details?id=com.bloomapp.android">SEE MORE</a>
+            <a class="a-btn" href="https://play.google.com/store/apps/details?id=com.apps.scanbuddy">SEE MORE</a>
         </div>
     </section>
 </main>
 <footer>
-    <p>Get It On Google Play <a href="https://play.google.com/store/apps/details?id=com.bloomapp.android">Download Now</a></p>
+    <p>Get It On Google Play <a href="https://play.google.com/store/apps/details?id=com.apps.scanbuddy">Download Now</a></p>
 </footer>
