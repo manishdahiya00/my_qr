@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_23_080144) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_31_065347) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -93,6 +93,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_080144) do
     t.string "qr_code_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "qr_name"
   end
 
   create_table "generated_qrs", force: :cascade do |t|
@@ -104,6 +105,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_080144) do
     t.datetime "updated_at", null: false
     t.string "versionName"
     t.string "versionCode"
+    t.string "qr_name"
   end
 
   create_table "managers", force: :cascade do |t|
@@ -121,6 +123,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_080144) do
     t.string "codeData"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "qr_name"
   end
 
   create_table "recently_addeds", force: :cascade do |t|
@@ -130,6 +133,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_080144) do
     t.datetime "updated_at", null: false
     t.string "device_detail_id"
     t.string "qrType"
+    t.string "qr_name"
   end
 
   create_table "redeems", force: :cascade do |t|

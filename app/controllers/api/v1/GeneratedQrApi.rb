@@ -16,6 +16,7 @@ module API
           requires :codeData,type: String, allow_blank: false
           requires :qrType,type:String,allow_blank: false
           requires :userId, type: String, allow_blank: true
+          requires :qrName, type: String, allow_blank: false
 
         end
 
@@ -29,7 +30,9 @@ module API
             @recently_added = @device_details.recently_added.create(
                 title:params[:qrType],
                 subtitle:params[:codeData],
-                qrType: params[:qrType])
+                qrType: params[:qrType],
+                qr_name:params[:qrName]
+                )
             codeImage = ActionDispatch::Http::UploadedFile.new(params[:codeImage])
             @generated_qr = @device_details.generated_qrs.create(
                 id: @recently_added.id,
@@ -39,7 +42,8 @@ module API
                 versionCode: params[:versionCode],
                 codeData: params[:codeData],
                 device_detail_id: @device_details.id,
-                codeImage: codeImage
+                codeImage: codeImage,
+                qr_name:params[:qrName]
               )
             {status:200,message:"Success",qrId: @generated_qr.id}
             rescue Exception => e

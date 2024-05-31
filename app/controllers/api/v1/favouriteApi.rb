@@ -24,18 +24,20 @@ module API
             else
               @device_details = DeviceDetail.find_by(deviceId:params[:deviceId],security_token: params[:securityToken])
             end
-            @generated_qr = GeneratedQr.find(params[:qrCodeId])
+            # @generated_qr = GeneratedQr.find(params[:qrCodeId])
+            # @scanned_qr = QrDatum.find(params[:qrCodeId])
+            @qr = RecentlyAdded.find(params[:qrCodeId])
             @isFavourite = Favourite.find_by(qr_code_id: params[:qrCodeId],deviceId: params[:deviceId])
             if params[:addFavourite] == true
               if @isFavourite.present?
                 {status:200,message:"Success",isFavourite:true}
               else
                 @favourites = @device_details.favourites.create(
-                  id: @generated_qr.id,
+                  id: @qr.id,
                   deviceId:params[:deviceId],
                   versionName:params[:versionName],
                   versionCode:params[:versionCode],
-                  qr_code_id:@generated_qr.id,
+                  qr_code_id:@qr.id,
                   device_detail_id:@device_details.id,
                   )
                 {status:200,message:"Success",isFavourite:true}
