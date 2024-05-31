@@ -23,9 +23,6 @@ module API
           requires :utmSource, type: String, allow_blank: true
           requires :utmMedium, type: String, allow_blank: true
           requires :utmTerm, type: String, allow_blank: true
-          requires :utmContent, type: String, allow_blank: true
-          requires :utmCampaign, type: String, allow_blank: true
-          requires :referrerUrl, type: String, allow_blank: true
           requires :oauthResponse, type: String, allow_blank: true
 
           end
@@ -64,22 +61,19 @@ module API
                     securityToken: @deviceDetails.security_token,
                     refCode: SecureRandom.hex(6)
                   )
-                puts  @user_details.wallet_balance
                 if @deviceDetails.user_detail_id.presence == nil
                   new_user_id = "#{@user_details.id}"
                 else
                   new_user_id = "#{@deviceDetails.user_detail_id}, #{@user_details.id}"
                 end
-                puts new_user_id
-                @deviceDetails.update(user_detail_id: new_user_id)
+                  @deviceDetails.update(user_detail_id: new_user_id)
                   @redeem = @user_details.transaction_histories.create(
                     title:"Signup Bonus",
                     subtitle:DateTime.now.strftime("%d/%m/%Y"),
                     coins:"5"
                 )
                 @user_details.update(wallet_balance: "5")
-                    {status:200,message:"Success",userId:@user_details.id,securityToken: @deviceDetails.security_token}
-                puts @user_details.wallet_balance
+                {status:200,message:"Success",userId:@user_details.id,securityToken: @deviceDetails.security_token}
               end
             rescue Exception => e
               {status:500,message: "Internal Server Error",error:e}
