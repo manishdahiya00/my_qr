@@ -27,6 +27,7 @@ module API
                 id:"1",
                 name:"Paytm",
                 category:"Cashback",
+                icon: "https://img.icons8.com/?size=256&id=68067&format=png",
                 payoutValues: ["500","1000","2000"],
                 payoutRewards: ["5000","10000","20000"],
               },
@@ -34,6 +35,7 @@ module API
                 id:"2",
                 name:"PayPal",
                 category:"Cashback",
+                icon: "https://img.icons8.com/?size=256&id=13611&format=png",
                 payoutValues: ["200","800","900"],
                 payoutRewards: ["2000","8000","9000"],
               },
@@ -41,11 +43,12 @@ module API
                 id:"3",
                 name:"PUBG",
                 category:"Game",
+                icon: "https://img.icons8.com/?size=256&id=73814&format=png",
                 payoutValues: ["400","1500","3000"],
                 payoutRewards: ["4000","15000","30000"],
               }
             ]
-            {status:200,message:"Success",coins: @user.wallet_balance.to_s,conversion:"100 Coins = ₹ 10",conversionAmt:(@user.wallet_balance/10).to_i,withdrawlLimit:"500",paytmMethods: @payment_methods}
+            {status:200,message:"Success",coins: @user.wallet_balance.to_s,conversion:(@user.wallet_balance / 10.to_f).to_s,conversionAmt:(@user.wallet_balance/10).to_i,withdrawlLimit:"500",paytmMethods: @payment_methods}
           rescue Exception => e
             {status:500,message:"Internal Server Error",error:e}
           end
