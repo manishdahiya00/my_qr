@@ -110,7 +110,7 @@ module API
                 subtitle:qr.subtitle,
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,
-                icon: ICON_TYPE_MAP[qr.qr_name].url
+                icon: "https://scansbuddy.app/images/text.png"
               }
 
             generated << qr_data
@@ -125,7 +125,7 @@ module API
                 subtitle:qr.subtitle,
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,
-                icon: ICON_TYPE_MAP[qr.qr_name].url
+                icon: "https://scansbuddy.app/images/text.png"
               }
 
               scanned << qr_data
@@ -140,7 +140,7 @@ module API
                 subtitle:qr.subtitle,
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,
-                icon: ICON_TYPE_MAP[qr.qr_name].url
+                icon: "https://scansbuddy.app/images/text.png"
               }
               favourites << qr_data
             end

@@ -101,14 +101,22 @@ module API
               @userCoins = "0"
             end
             recentlyAddeds = []
+            DARK_COLOR = ["#2AAA8A", "#0096FF", "#FF69B4", "#FDDA0D"]
+            FADE_COLOR = ["#342AAA8A", "#1D0096FF", "#28FF69B4", "#25FDDA0D"]
+
             @recentlyAdded.each do |qr|
+              random_color = DARK_COLOR.sample
+              random_index = DARK_COLOR.index(random_color)
+
               qr_data = {
                 id:qr.id,
                 title:qr.qr_name,
                 subtitle:qr.subtitle,
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,
-                icon: "https://scansbuddy.app/images/text.png"
+                icon: "https://scansbuddy.app/images/text.png",
+                darkColor: random_color,
+                fadeColor: FADE_COLOR[random_index]
               }
             recentlyAddeds << qr_data
             end
