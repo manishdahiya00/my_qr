@@ -107,7 +107,7 @@ module API
                 title: @qr.qr_name,
                 subtitle: @qr.codeData,
                 createdAt: @qr.created_at.strftime("%d/%m/%y"),
-                icon: ICON_TYPE_MAP[@qr.qr_name].url
+                icon: "https://scansbuddy.app/images/text.png"
               }
                 @image = @qr.codeImage.url
               @isFavourite = Favourite.find_by(qr_code_id: params[:qrId]).present?
