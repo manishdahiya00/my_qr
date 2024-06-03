@@ -90,16 +90,16 @@ module API
           begin
             if params[:userId] == "2"
               @deviceDetail = DeviceDetail.find_by(deviceId: "12345678",security_token: params[:securityToken])
-              @generated = RecentlyAdded.where(device_detail_id: @deviceDetail.id.to_s,qrType: "Generated").select(:id,:title,:subtitle,:created_at,:qr_name)
-              @scanned = RecentlyAdded.where(device_detail_id: @deviceDetail.id.to_s,qrType: "Scanned").select(:id,:title,:subtitle,:created_at,:qr_name)
+              @generated = RecentlyAdded.where(device_detail_id: @deviceDetail.id.to_s,qrType: "Generated").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
+              @scanned = RecentlyAdded.where(device_detail_id: @deviceDetail.id.to_s,qrType: "Scanned").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
               @favourite = Favourite.where(device_detail_id: @deviceDetail.id.to_s)
-              @favourites = RecentlyAdded.where(id: @favourite.ids).select(:id,:title,:subtitle,:created_at,:qr_name)
+              @favourites = RecentlyAdded.where(id: @favourite.ids).select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
             else
               @device_details = DeviceDetail.find_by(deviceId: params[:deviceId],security_token: params[:securityToken])
-              @generated = RecentlyAdded.where(device_detail_id: @device_details.id,qrType: "Generated").select(:id,:title,:subtitle,:created_at,:qr_name)
-              @scanned = RecentlyAdded.where(device_detail_id: @device_details.id,qrType: "Scanned").select(:id,:title,:subtitle,:created_at,:qr_name)
+              @generated = RecentlyAdded.where(device_detail_id: @device_details.id,qrType: "Generated").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
+              @scanned = RecentlyAdded.where(device_detail_id: @device_details.id,qrType: "Scanned").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
               @favourite = Favourite.where(device_detail_id: @device_details.id)
-              @favourites = RecentlyAdded.where(id: @favourite.ids).select(:id,:title,:subtitle,:created_at,:qr_name)
+              @favourites = RecentlyAdded.where(id: @favourite.ids).select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
             end
             generated = []
            if @generated
