@@ -16,11 +16,9 @@ module API
         post do
           begin
             if params[:userId] == "2"
-              @deviceDetail = DeviceDetail.find_by(deviceId: "12345678",security_token: params[:securityToken])
-              @user = UserDetail.find_by(id:"3")
+              @user = UserDetail.find(params[:userId])
             else
-              @deviceDetail = DeviceDetail.find_by(deviceId: params[:deviceId],security_token: params[:securityToken])
-              @user = UserDetail.find_by(id:params[:userId])
+              @user = UserDetail.find(params[:userId])
             end
             @payment_methods = [
               {

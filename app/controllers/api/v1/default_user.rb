@@ -16,7 +16,13 @@ module API
           begin
             if params[:userEmail] == "techmindgeeks@gmail.com" && params[:password] == "Slacker@123"
               @default_user = UserDetail.find_by(socialEmail: params[:userEmail])
-              {status:200,message:"Success",userId:@default_user.id.to_s,securityToken:"12345678"}
+              @default_user.update(wallet_balance: "5")
+              @default_user.transaction_histories.create(
+                title:"Signup Bonus",
+                subtitle:DateTime.now.strftime("%d/%m/%Y"),
+                coins:"5"
+            )
+              {status:200,message:"Success",userId:@default_user.id.to_s,securityToken:@default_user.securityToken}
             else
               {status:500,message:"Invalid User"}
             end

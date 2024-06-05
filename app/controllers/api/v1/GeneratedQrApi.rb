@@ -27,11 +27,12 @@ module API
             else
               @device_details = DeviceDetail.find_by(deviceId:params[:deviceId],security_token: params[:securityToken])
             end
+
             @recently_added = @device_details.recently_added.create(
                 title:params[:qrType],
                 subtitle:params[:codeData],
-                qrType: params[:qrType],
-                qr_name:params[:qrName]
+                qr_name: params[:qrName],
+                qrType: params[:qrType]
                 )
             codeImage = ActionDispatch::Http::UploadedFile.new(params[:codeImage])
             @generated_qr = @device_details.generated_qrs.create(
@@ -45,6 +46,7 @@ module API
                 codeImage: codeImage,
                 qr_name:params[:qrName]
               )
+
             {status:200,message:"Success",qrId: @generated_qr.id}
             rescue Exception => e
             {status:500,message:"Internal Server Error",error:e}

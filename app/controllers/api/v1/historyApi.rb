@@ -14,33 +14,33 @@ module API
           @url = url
         end
 
-        UNKNOWN = IconType.new("https://scansbuddy.app/images/text.png")
-        ALL_FORMATS = IconType.new("https://scansbuddy.app/images/text.png")
-        CODE_128 = IconType.new("https://scansbuddy.app/images/text.png")
-        CODE_39 = IconType.new("https://scansbuddy.app/images/text.png")
-        CODE_93 = IconType.new("https://scansbuddy.app/images/text.png")
-        CODABAR = IconType.new("https://scansbuddy.app/images/text.png")
-        DATA_MATRIX = IconType.new("https://scansbuddy.app/images/text.png")
-        EAN_13 = IconType.new("https://scansbuddy.app/images/text.png")
-        EAN_8 = IconType.new("https://scansbuddy.app/images/text.png")
-        ITF = IconType.new("https://scansbuddy.app/images/text.png")
-        QR_CODE = IconType.new("https://scansbuddy.app/images/text.png")
-        UPC_A = IconType.new("https://scansbuddy.app/images/text.png")
-        UPC_E = IconType.new("https://scansbuddy.app/images/text.png")
-        PDF417 = IconType.new("https://scansbuddy.app/images/text.png")
-        AZTEC = IconType.new("https://scansbuddy.app/images/text.png")
-        CONTACT_INFO = IconType.new("https://scansbuddy.app/images/text.png")
-        EMAIL = IconType.new("https://scansbuddy.app/images/text.png")
-        ISBN = IconType.new("https://scansbuddy.app/images/text.png")
-        PHONE = IconType.new("https://scansbuddy.app/images/text.png")
-        PRODUCT = IconType.new("https://scansbuddy.app/images/text.png")
-        SMS = IconType.new("https://scansbuddy.app/images/text.png")
+        UNKNOWN = IconType.new("https://scansbuddy.app/images/help.png")
+        ALL_FORMATS = IconType.new("https://scansbuddy.app/images/all-format.png")
+        CODE_128 = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        CODE_39 = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        CODE_93 = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        CODABAR = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        DATA_MATRIX = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        EAN_13 = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        EAN_8 = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        ITF = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        QR_CODE = IconType.new("https://scansbuddy.app/images/qr-code.png")
+        UPC_A = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        UPC_E = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        PDF417 = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        AZTEC = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        CONTACT_INFO = IconType.new("https://scansbuddy.app/images/contact.png")
+        EMAIL = IconType.new("https://scansbuddy.app/images/email.png")
+        ISBN = IconType.new("https://scansbuddy.app/images/bar-code.png")
+        PHONE = IconType.new("https://scansbuddy.app/images/phone.png")
+        PRODUCT = IconType.new("https://scansbuddy.app/images/product.png")
+        SMS = IconType.new("https://scansbuddy.app/images/sms.png")
         TEXT = IconType.new("https://scansbuddy.app/images/text.png")
-        URL = IconType.new("https://scansbuddy.app/images/text.png")
-        WIFI = IconType.new("https://scansbuddy.app/images/text.png")
-        GEO = IconType.new("https://scansbuddy.app/images/text.png")
-        CALENDAR_EVENT = IconType.new("https://scansbuddy.app/images/text.png")
-        DRIVER_LICENSE = IconType.new("https://scansbuddy.app/images/text.png")
+        URL = IconType.new("https://scansbuddy.app/images/url.png")
+        WIFI = IconType.new("https://scansbuddy.app/images/wifi.png")
+        GEO = IconType.new("https://scansbuddy.app/images/location.png")
+        CALENDAR_EVENT = IconType.new("https://scansbuddy.app/images/calender.png")
+        DRIVER_LICENSE = IconType.new("https://scansbuddy.app/images/driver-license.png")
       end
 
       ICON_TYPE_MAP = {
@@ -71,7 +71,8 @@ module API
       "GEO" => IconType::GEO,
       "CALENDAR EVENT" => IconType::CALENDAR_EVENT,
       "DRIVER LICENSE" => IconType::DRIVER_LICENSE
-}
+    }
+
 
 
 
