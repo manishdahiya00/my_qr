@@ -105,13 +105,18 @@ module API
             generated = []
            if @generated
             @generated.each do |qr|
+              if qr.qr_name == nil
+                icon = ICON_TYPE_MAP["UNKNOWN"].url
+              else
+                icon = ICON_TYPE_MAP[qr.qr_name].url
+              end
               qr_data = {
                 id:qr.id,
                 title:qr.qr_name,
                 subtitle:qr.subtitle,
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,
-                icon: ICON_TYPE_MAP[qr.qr_name].url
+                icon: icon
               }
 
             generated << qr_data
@@ -120,13 +125,18 @@ module API
             scanned = []
            if @scanned
             @scanned.each do |qr|
+              if qr.qr_name == nil
+                icon = ICON_TYPE_MAP["UNKNOWN"].url
+              else
+                icon = ICON_TYPE_MAP[qr.qr_name].url
+              end
               qr_data = {
                 id:qr.id,
                 title:qr.qr_name,
                 subtitle:qr.subtitle,
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,
-                icon: ICON_TYPE_MAP[qr.qr_name].url
+                icon: icon
               }
 
               scanned << qr_data
@@ -135,13 +145,18 @@ module API
             favourites = []
            if @favourites
             @favourites.each do |qr|
+              if qr.qr_name == nil
+                icon = ICON_TYPE_MAP["UNKNOWN"].url
+              else
+                icon = ICON_TYPE_MAP[qr.qr_name].url
+              end
               qr_data = {
                 id:qr.id,
                 title:qr.qr_name,
                 subtitle:qr.subtitle,
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,
-                icon: ICON_TYPE_MAP[qr.qr_name].url
+                icon: icon
               }
               favourites << qr_data
             end

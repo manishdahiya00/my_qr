@@ -4,6 +4,8 @@ module API
       prefix :api
       version :v1
       format :json
+
+
       class IconType
         attr_reader :url
 
@@ -103,12 +105,17 @@ module API
               @image = ""
             when "Generated"
               @qr = GeneratedQr.where(id: params[:qrId]).select(:id,:codeData,:created_at,:qr_name).first
+              if @qr.qr_name == nil
+                icon = ICON_TYPE_MAP["UNKNOWN"].url
+              else
+                icon = ICON_TYPE_MAP[@qr.qr_name].url
+              end
               @history = {
                 id: @qr.id,
                 title: @qr.qr_name,
                 subtitle: @qr.codeData,
                 createdAt: @qr.created_at.strftime("%d/%m/%y"),
-                icon: "https://scansbuddy.app/images/text.png"
+                icon: icon
               }
                 @image = @qr.codeImage.url
               @isFavourite = Favourite.find_by(qr_code_id: params[:qrId]).present?

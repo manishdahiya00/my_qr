@@ -109,8 +109,12 @@ module API
               versionCode: params[:versionCode],
               codeData: params[:data],
               qr_name: params[:qrName],)
-
-            {status:200,message:"Success",createdAt:@qrData.created_at.strftime("%d/%m/%y"),id:@recently_added.id,icon: ICON_TYPE_MAP[@recently_added.qr_name].url}
+              if @recently_added.qr_name == nil
+                icon = ICON_TYPE_MAP["UNKNOWN"].url
+              else
+                icon = ICON_TYPE_MAP[@recently_added.qr_name].url
+              end
+            {status:200,message:"Success",createdAt:@qrData.created_at.strftime("%d/%m/%y"),id:@recently_added.id,icon: icon}
           rescue Exception => e
             {status:500,message:"Internal Server Error",error:e}
           end
