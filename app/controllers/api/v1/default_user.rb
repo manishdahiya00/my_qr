@@ -16,7 +16,7 @@ module API
           begin
             if params[:userEmail] == "techmindgeeks@gmail.com" && params[:password] == "Slacker@123"
               @default_user = UserDetail.find_by(socialEmail: params[:userEmail])
-              {status:200,message:"Success",userId:@default_user.id.to_s,securityToken:@default_user.securityToken}
+              {status:200,message:"Success",userId:@default_user.id.to_s,securityToken:"12345678"}
             else
               {status:500,message:"Invalid User"}
             end
