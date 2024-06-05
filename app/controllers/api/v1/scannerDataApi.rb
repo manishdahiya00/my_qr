@@ -111,8 +111,10 @@ module API
               qr_name: params[:qrName],)
               if @recently_added.qr_name == nil
                 icon = ICON_TYPE_MAP["UNKNOWN"].url
+                title = "UNKNOWN"
               else
                 icon = ICON_TYPE_MAP[@recently_added.qr_name].url
+                title = @recently_added.qr_name
               end
             {status:200,message:"Success",createdAt:@qrData.created_at.strftime("%d/%m/%y"),id:@recently_added.id,icon: icon}
           rescue Exception => e

@@ -108,13 +108,15 @@ module API
 
               if qr.qr_name == nil
                 icon = ICON_TYPE_MAP["UNKNOWN"].url
+                title = "UNKNOWN"
               else
                 icon = ICON_TYPE_MAP[qr.qr_name].url
+                title = qr.qr_name
               end
 
               qr_data = {
                 id:qr.id,
-                title:qr.qr_name,
+                title:title,
                 subtitle:qr.subtitle,
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,

@@ -94,12 +94,19 @@ module API
             case params[:qrType]
             when "Scanned"
               @qr = RecentlyAdded.where(id: params[:qrId]).first
+              if @qr.qr_name == nil
+                icon = ICON_TYPE_MAP["UNKNOWN"].url
+                title = "UNKNOWN"
+              else
+                icon = ICON_TYPE_MAP[@qr.qr_name].url
+                title = @qr.qr_name
+              end
               @history = {
                 id: @qr.id,
-                title: @qr.qr_name,
+                title: title,
                 subtitle: @qr.subtitle,
                 createdAt: @qr.created_at.strftime("%d/%m/%y"),
-                icon: ICON_TYPE_MAP[@qr.qr_name].url
+                icon: icon
               }
               @isFavourite = Favourite.find_by(qr_code_id: params[:qrId]).present?
               @image = ""
@@ -107,12 +114,14 @@ module API
               @qr = GeneratedQr.where(id: params[:qrId]).select(:id,:codeData,:created_at,:qr_name).first
               if @qr.qr_name == nil
                 icon = ICON_TYPE_MAP["UNKNOWN"].url
+                title = "UNKNOWN"
               else
                 icon = ICON_TYPE_MAP[@qr.qr_name].url
+                title = @qr.qr_name
               end
               @history = {
                 id: @qr.id,
-                title: @qr.qr_name,
+                title: title,
                 subtitle: @qr.codeData,
                 createdAt: @qr.created_at.strftime("%d/%m/%y"),
                 icon: icon
