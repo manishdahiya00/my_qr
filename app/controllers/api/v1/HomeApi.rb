@@ -88,7 +88,7 @@ module API
             @appBanners = AppBanner.all.select(:id, :imgUrl, :actionUrl).where(:status => true)
             if params[:userId] == "2"
               @deviceDetail = DeviceDetail.find_by(deviceId: "12345678",security_token: params[:securityToken])
-              @recentlyAdded = RecentlyAdded.where(device_detail_id: @deviceDetail.id).select(:id,:title, :subtitle,:created_at).order(created_at: :desc).limit(10)
+              @recentlyAdded = RecentlyAdded.where(device_detail_id: @deviceDetail.id).select(:id,:title, :subtitle,:created_at,:qr_)name.order(created_at: :desc).limit(10)
             else
               @deviceDetail = DeviceDetail.find_by(deviceId: params[:deviceId], security_token: params[:securityToken])
               puts @deviceDetail
