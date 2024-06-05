@@ -57,7 +57,6 @@ module API
                     utmCampaign: params[:utmCampaign],
                     referrerUrl: params[:referrerUrl],
                     device_detail_id: @deviceDetails.id,
-                    oauth_response: params[:oauthResponse],
                     securityToken: @deviceDetails.security_token,
                     refCode: SecureRandom.hex(6)
                   )
