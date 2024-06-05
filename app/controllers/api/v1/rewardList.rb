@@ -48,7 +48,7 @@ module API
                 payoutRewards: ["4000","15000","30000"],
               }
             ]
-            {status:200,message:"Success",coins: @user.wallet_balance.to_s,conversion:(@user.wallet_balance / 10.to_f).to_s,conversionAmt:(@user.wallet_balance/10).to_i,withdrawlLimit:"500",paytmMethods: @payment_methods}
+            {status:200,message:"Success",coins: @user.wallet_balance.to_s,conversion:(@user.wallet_balance / 10.to_f).to_s,conversionAmt:(@user.wallet_balance/10.to_f).to_f,withdrawlLimit:"500",paytmMethods: @payment_methods}
           rescue Exception => e
             {status:500,message:"Internal Server Error",error:e}
           end

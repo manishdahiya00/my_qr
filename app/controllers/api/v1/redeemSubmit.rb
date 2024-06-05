@@ -40,7 +40,7 @@ module API
                   versionCode: params[:versionCode],
                   payId: params[:payId]
                 )
-                @user.redeem_histories.create(
+                @user.transaction_histories.create(
                   title: "Withdrawal",
                   subtitle: DateTime.now.strftime("%d/%m/%y"),
                   coins: @user.wallet_balance

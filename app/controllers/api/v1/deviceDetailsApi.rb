@@ -67,11 +67,11 @@ module API
          begin
            user = UserDetail.find_by(id:params[:userId],securityToken: params[:securityToken])
            if user
-             inviteFbUrl = "https://my-qr-ea18.onrender.com//invite/#{user.refCode}/?by=facebook"
-             inviteWhatsappUrl = "https://my-qr-ea18.onrender.com//invite/#{user.refCode}/?by=whatsapp"
-             inviteTelegramUrl = "https://my-qr-ea18.onrender.com//invite/#{user.refCode}/?by=telegram"
-             inviteOtherUrl = "https://my-qr-ea18.onrender.com//invite/#{user.refCode}/?by=other"
-             inviteText = "Share, Invite Friends and Get Free Cash and Diamonds.\n ► Get 5 MyQr amount instant as your Friend Register on MyQr App."
+             inviteFbUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=facebook"
+             inviteWhatsappUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=whatsapp"
+             inviteTelegramUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=telegram"
+             inviteOtherUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=other"
+             inviteText = "Share, Invite Friends and Get Free Cash and Diamonds.\n ► Get 5 ScanBuddy amount instant as your Friend Register on ScanBuddy App."
              {message: "Success", status: 200, inviteFbUrl: inviteFbUrl,inviteWhatsappUrl: inviteWhatsappUrl,inviteTelegramUrl: inviteTelegramUrl,inviteOtherUrl: inviteOtherUrl,inviteText: inviteText,refCode:user.refCode}
            else
              {message: "Invalid User", status: 500}

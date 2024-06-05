@@ -114,7 +114,7 @@ module API
                 subtitle:qr.subtitle,
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,
-                icon: "https://scansbuddy.app/images/text.png",
+                icon: ICON_TYPE_MAP[qr.qr_name].url,
                 darkColor: random_color,
                 fadeColor: FADE_COLOR[random_index]
               }
