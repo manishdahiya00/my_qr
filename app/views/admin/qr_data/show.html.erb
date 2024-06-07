@@ -1,232 +1,44 @@
-<%= stylesheet_link_tag "adminIndex" %>
-  <h1>Qr Data</h1>
-<div class="wrapper">
-    <% if @qrData %>
-  <div class="table">
-    <div class="row header">
-      <div class="cell">
-        Id
+<!-- Page Content -->
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <p id="notice" style="color: orange;"><%= notice %></p>
+      <div class="col-lg-12">
+        <h2 class="page-header" style="margin: 10px 0 15px !important;">Recently Added</h2>
+        <%= link_to 'Back', admin_generated_qrs_path, class: "btn btn-primary", style: "margin-bottom: 15px;" %>
       </div>
-      <div class="cell">
-       Code Data
-      </div>
-       <div class="cell">
-      Device Detail
-      </div>
-        <div class="cell">
-      Version Name
-      </div>
-        <div class="cell">
-      Version Code
-      </div>
-      <div class="cell">
-        Created At
-      </div>
-      <div class="cell">
-        Updated At
-      </div>
+      
+      <!-- Recently Added Details Table -->
+      <% if @qrData %>
+        <table class="table table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Code Data</th>
+              <th>Device Detail</th>
+              <th>Version Name</th>
+              <th>Version Code</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @qrData.id %></td>
+              <td><%= @qrData.codeData %></td>
+              <td><a href="/admin/device_details/<%= @qrData.device_detail_id %>">Device Detail <%= @qrData.device_detail_id %></a></td>
+              <td><%= @qrData.versionName %></td>
+              <td><%= @qrData.versionCode %></td>
+              <td><%= @qrData.created_at %></td>
+              <td><%= @qrData.updated_at %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="col-lg-12">
+          <h1 class="not-found">No QR Data Found</h1>
+        </div>
+      <% end %>
     </div>
-    
-      <div class="cell" data-title="id">
-        <%= @qrData.id %>
-      </div>
-       <div class="cell" data-title="deviceId">
-      <%= @qrData.codeData %>
-      </div> 
-      <div class="cell" data-title="deviceId">
-      <a href="/admin/device_details/<%= @qrData.device_detail_id %>">
-        Device Detail <%= @qrData.device_detail_id %> &nbsp;&nbsp;&nbsp;&nbsp;
-      </a>
-      </div>
-       <div class="cell" data-title="securityToken">
-        <%= @qrData.versionName %>
-      </div>
-       <div class="cell" data-title="securityToken">
-        <%= @qrData.versionCode %>
-      </div>
-      <div class="cell" data-title="securityToken">
-        <%= @qrData.created_at %>
-      </div>
-      <div class="cell" data-title="advertisingId">
-        <%= @qrData.updated_at %>
-      </div>
-   
   </div>
-<%#   
-  <div class="table">
-    
-    <div class="row header green">
-      <div class="cell">
-        Product
-      </div>
-      <div class="cell">
-        Unit Price
-      </div>
-      <div class="cell">
-        Quantity
-      </div>
-      <div class="cell">
-        Date Sold
-      </div>
-      <div class="cell">
-        Status
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        Solid oak work table
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $800
-      </div>
-      <div class="cell" data-title="Quantity">
-        10
-      </div>
-      <div class="cell" data-title="Date Sold">
-        03/15/2014
-      </div>
-      <div class="cell" data-title="Status">
-        Waiting for Pickup
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        Leather iPhone wallet
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $45
-      </div>
-      <div class="cell" data-title="Quantity">
-        120
-      </div>
-      <div class="cell" data-title="Date Sold">
-        02/28/2014
-      </div>
-      <div class="cell" data-title="Status">
-        In Transit
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        27" Apple Thunderbolt displays
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $1000
-      </div>
-      <div class="cell" data-title="Quantity">
-        25
-      </div>
-      <div class="cell" data-title="Date Sold">
-        02/10/2014
-      </div>
-      <div class="cell" data-title="Status">
-        Delivered
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        Bose studio headphones
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $60
-      </div>
-      <div class="cell" data-title="Quantity">
-        90
-      </div>
-      <div class="cell" data-title="Date Sold">
-        01/14/2014
-      </div>
-      <div class="cell" data-title="Status">
-        Delivered
-      </div>
-    </div>
-    
-  </div>
-  
-  <div class="table">
-    
-    <div class="row header blue">
-      <div class="cell">
-        Username
-      </div>
-      <div class="cell">
-        Email
-      </div>
-      <div class="cell">
-        Password
-      </div>
-      <div class="cell">
-        Active
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        ninjalug
-      </div>
-      <div class="cell" data-title="Email">
-        misterninja@hotmail.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        Yes
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        jsmith41
-      </div>
-      <div class="cell" data-title="Email">
-        joseph.smith@gmail.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        No
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        1337hax0r15
-      </div>
-      <div class="cell" data-title="Email">
-        hackerdude1000@aol.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        Yes
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        hairyharry19
-      </div>
-      <div class="cell" data-title="Email">
-        harryharry@gmail.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        Yes
-      </div>
-    </div>
-     %>
-  </div>
-   <% else %>
-    <h1 class="not-found">No Qr Data Found</h1>
-    <% end %>
 </div>
-

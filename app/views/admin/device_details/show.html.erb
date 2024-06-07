@@ -1,87 +1,120 @@
-<%= stylesheet_link_tag "adminIndex" %>
-<h1>Device Details</h1>
-<div class="wrapper">
-  <% if @deviceDetail %>
-    <div class="table">
-      <div class="row header">
-        <div class="cell">Id</div>
-        <div class="cell">Device Name</div>
-        <div class="cell">Device Id</div>
-        <div class="cell">Security Token</div>
-        <div class="cell">Advertising Id</div>
-        <div class="cell">Utm Term</div>
-        <div class="cell">Utm Content</div>
+<!-- Page Content -->
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <p id="notice" style="color:orange;"><%= notice %></p>
+      <div class="col-lg-12">
+        <h2 class="page-header" style="margin: 10px 0 15px !important;">Showing Device Details</h2>
+          <%= link_to 'Back', admin_device_details_path ,class: "btn btn-primary" ,style: "margin-bottom:15px;"%></b>
       </div>
-      <div class="cell" data-title="id"><%= @deviceDetail.id %></div>
-      <div class="cell" data-title="deviceName"><%= @deviceDetail.deviceName %></div>
-      <div class="cell" data-title="deviceId"><%= @deviceDetail.deviceId %></div>
-      <div class="cell" data-title="securityToken"><%= @deviceDetail.security_token %></div>
-      <div class="cell" data-title="advertisingId"><%= @deviceDetail.advertisingId %></div>
-      <div class="cell" data-title="utmTerm"><%= @deviceDetail.utmTerm %></div>
-      <div class="cell" data-title="utmContent"><%= @deviceDetail.utmContent %></div>
+      
+      <!-- Device Details Table -->
+      <table class="table table-responsive table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Device Name</th>
+            <th>Device Id</th>
+            <th>Security Token</th>
+            <th>Advertising Id</th>
+            <th>Utm Term</th>
+            <th>Utm Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @deviceDetail.id %></td>
+            <td><%= @deviceDetail.deviceName %></td>
+            <td><%= @deviceDetail.deviceId %></td>
+            <td><%= @deviceDetail.security_token %></td>
+            <td><%= @deviceDetail.advertisingId %></td>
+            <td><%= @deviceDetail.utmTerm %></td>
+            <td><%= @deviceDetail.utmContent %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Additional Device Information Table -->
+      <table class="table table-responsive table-bordered">
+        <thead>
+          <tr>
+            <th>Device Type</th>
+            <th>Version Name</th>
+            <th>Version Code</th>
+            <th>Utm Source</th>
+            <th>Utm Medium</th>
+            <th>Referrer Url</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @deviceDetail.deviceType %></td>
+            <td><%= @deviceDetail.versionName %></td>
+            <td><%= @deviceDetail.versionCode %></td>
+            <td><%= @deviceDetail.utmSource %></td>
+            <td><%= @deviceDetail.utmMedium %></td>
+            <td><%= @deviceDetail.referrerUrl %></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <!-- QR Codes Table -->
+      <h3>QR Codes</h3>
+      <% if @qrCodes.present? %>
+        <table class="table table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Subtitle</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @qrCodes.each do |qr| %>
+              <tr>
+                <td><%= qr.id %></td>
+                <td><%= qr.title %></td>
+                <td><%= qr.subtitle.truncate(50) %></td>
+                <td><%= qr.created_at %></td>
+                <td><%= qr.updated_at %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>No QR Codes found.</p>
+      <% end %>
+      
+      <!-- Favourites Table -->
+      <h3>Favourites</h3>
+      <% if @favourites.present? %>
+        <table class="table table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th>QR Code Id</th>
+              <th>Version Name</th>
+              <th>Version Code</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @favourites.each do |fav| %>
+              <tr>
+                <td><%= fav.qr_code_id %></td>
+                <td><%= fav.versionName %></td>
+                <td><%= fav.versionCode %></td>
+                <td><%= fav.created_at %></td>
+                <td><%= fav.updated_at %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>No Favourites found.</p>
+      <% end %>
     </div>
-
-    <div class="table">
-      <div class="row header">
-        <div class="cell">Device Type</div>
-        <div class="cell">Version Name</div>
-        <div class="cell">Version Code</div>
-        <div class="cell">Utm Source</div>
-        <div class="cell">Utm Medium</div>
-        <div class="cell">Referrer Url</div>
-      </div>
-      <div class="cell" data-title="deviceType"><%= @deviceDetail.deviceType %></div>
-      <div class="cell" data-title="versionName"><%= @deviceDetail.versionName %></div>
-      <div class="cell" data-title="versionCode"><%= @deviceDetail.versionCode %></div>
-      <div class="cell" data-title="utmSource"><%= @deviceDetail.utmSource %></div>
-      <div class="cell" data-title="utmMedium"><%= @deviceDetail.utmMedium %></div>
-      <div class="cell" data-title="referrerUrl"><%= @deviceDetail.referrerUrl %></div>
-    </div>
-
-    <h3>Qr Codes</h3>
-    <% if @qrCodes %>
-      <div class="table">
-        <div class="row header">
-          <div class="cell">Id</div>
-          <div class="cell">Title</div>
-          <div class="cell">Subtitle</div>
-          <div class="cell">Created At</div>
-          <div class="cell">Updated At</div>
-        </div>
-        <% @qrCodes.each do |qr| %>
-          <a href="/admin/recently_addeds/<%= qr.id %>" class="row">
-            <div class="cell" data-title="id"><%= qr.id %></div>
-            <div class="cell" data-title="deviceName"><%= qr.title %></div>
-            <div class="cell" data-title="deviceId"><%= qr.subtitle[0,50] + "..." %></div>
-            <div class="cell" data-title="securityToken"><%= qr.created_at %></div>
-            <div class="cell" data-title="advertisingId"><%= qr.updated_at %></div>
-          </a>
-        <% end %>
-      </div>
-    <% end %>
-
-    <h3>Favourites</h3>
-    <% if @favourites %>
-      <div class="table">
-        <div class="row header">
-          <div class="cell">Id</div>
-          <div class="cell">Version Name</div>
-          <div class="cell">Version Code</div>
-          <div class="cell">Created At</div>
-          <div class="cell">Updated At</div>
-        </div>
-        <% @favourites.each do |fav| %>
-          <a href="/admin/favourites/<%= fav.id %>" class="row">
-            <div class="cell" data-title="id"><%= fav.qr_code_id %></div>
-            <div class="cell" data-title="deviceName"><%= fav.versionName %></div>
-            <div class="cell" data-title="deviceId"><%= fav.versionCode %></div>
-            <div class="cell" data-title="securityToken"><%= fav.created_at %></div>
-            <div class="cell" data-title="advertisingId"><%= fav.updated_at %></div>
-          </a>
-        <% end %>
-      </div>
-    <% end %>
-  <% else %>
-    <h1 class="not-found">No Device Found</h1>
-  <% end %>
+  </div>
 </div>

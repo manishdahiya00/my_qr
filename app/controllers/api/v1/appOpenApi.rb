@@ -23,7 +23,7 @@ module API
 
         post do
           begin
-            @app_open = AppOpen.find_by(deviceId: params[:deviceId],securityToken: params[:securityToken])
+            @app_open = AppOpen.find_by(deviceId: params[:deviceId])
             unless @app_open.present?
               @app_open = AppOpen.create(
                 deviceId: params[:deviceId],

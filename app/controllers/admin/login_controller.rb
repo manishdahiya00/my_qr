@@ -5,9 +5,9 @@ class Admin::LoginController < ApplicationController
   def login
     if params[:username] == "admin@gmail.com" && params[:password] == "123"
       session[:admin_authenticated] = true
-      redirect_to admin_device_details_path
+      redirect_to admin_dashboard_path
     else
-      flash.now[:alert] = "Invalid email or password"
+      flash.now[:notice] = "Invalid email or password"
       render :new
     end
   end

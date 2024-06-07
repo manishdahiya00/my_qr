@@ -1,2 +1,0 @@
-class DeviceType < ApplicationRecord
-end

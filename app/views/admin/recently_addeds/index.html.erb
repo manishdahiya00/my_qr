@@ -1,229 +1,44 @@
-<%= stylesheet_link_tag "adminIndex" %>
-  <h1>Recently Added</h1>
-<div class="wrapper">
-    <% if @recentlyAdded %>
-  <div class="table">
-    <div class="row header">
-      <div class="cell">
-        Id
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header" style="margin: 10px 0 15px !important;">Recently Added</h2>
       </div>
-      <div class="cell">
-        Title
-      </div>
-       <div class="cell">
-        Subtitle
-      </div>
-      <div class="cell">
-        Device Id
-      </div>
-      <div class="cell">
-        Created At
-      </div>
-      <div class="cell">
-        Updated At
-      </div>
+      <% if @recentlyAdded.present? %>
+        <table class="table table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Subtitle</th>
+              <th>Device Id</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @recentlyAdded.each do |recent| %>
+              <tr>
+                <td><%= recent.id %></td>
+                <td><%= recent.title %></td>
+                <td><%= recent.subtitle.truncate(50) %></td>
+                <td>Device Detail <%= recent.device_detail_id %></td>
+                <td><%= recent.created_at %></td>
+                <td><%= recent.updated_at %></td>
+                <td>
+                  <%= link_to 'Show', admin_recently_added_path(recent), class: 'btn btn-primary' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h1 class="not-found">No Recently Added Found</h1>
+      <% end %>
     </div>
-    
-   <% @recentlyAdded.each do |recent| %>
-    <a href="/admin/recently_addeds/<%= recent.id %>" class="row">
-      <div class="cell" data-title="id">
-        <%= recent.id %>
-      </div>
-      <div class="cell" data-title="deviceName">
-        <%= recent.title %>
-      </div>
-      <div class="cell" data-title="deviceId">
-        <% subtitle = recent.subtitle[0,50] + "..." %>
-        <%= subtitle %>
-      </div>
-       <div class="cell" data-title="deviceId">
-        Device Detail <%= recent.device_detail_id %>
-      </div>
-      <div class="cell" data-title="securityToken">
-        <%= recent.created_at %>
-      </div>
-      <div class="cell" data-title="advertisingId">
-        <%= recent.updated_at %>
-      </div>
-    </a>
-   <% end %>
-   
+    <!-- /.row -->
   </div>
-<%#   
-  <div class="table">
-    
-    <div class="row header green">
-      <div class="cell">
-        Product
-      </div>
-      <div class="cell">
-        Unit Price
-      </div>
-      <div class="cell">
-        Quantity
-      </div>
-      <div class="cell">
-        Date Sold
-      </div>
-      <div class="cell">
-        Status
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        Solid oak work table
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $800
-      </div>
-      <div class="cell" data-title="Quantity">
-        10
-      </div>
-      <div class="cell" data-title="Date Sold">
-        03/15/2014
-      </div>
-      <div class="cell" data-title="Status">
-        Waiting for Pickup
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        Leather iPhone wallet
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $45
-      </div>
-      <div class="cell" data-title="Quantity">
-        120
-      </div>
-      <div class="cell" data-title="Date Sold">
-        02/28/2014
-      </div>
-      <div class="cell" data-title="Status">
-        In Transit
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        27" Apple Thunderbolt displays
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $1000
-      </div>
-      <div class="cell" data-title="Quantity">
-        25
-      </div>
-      <div class="cell" data-title="Date Sold">
-        02/10/2014
-      </div>
-      <div class="cell" data-title="Status">
-        Delivered
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        Bose studio headphones
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $60
-      </div>
-      <div class="cell" data-title="Quantity">
-        90
-      </div>
-      <div class="cell" data-title="Date Sold">
-        01/14/2014
-      </div>
-      <div class="cell" data-title="Status">
-        Delivered
-      </div>
-    </div>
-    
-  </div>
-  
-  <div class="table">
-    
-    <div class="row header blue">
-      <div class="cell">
-        Username
-      </div>
-      <div class="cell">
-        Email
-      </div>
-      <div class="cell">
-        Password
-      </div>
-      <div class="cell">
-        Active
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        ninjalug
-      </div>
-      <div class="cell" data-title="Email">
-        misterninja@hotmail.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        Yes
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        jsmith41
-      </div>
-      <div class="cell" data-title="Email">
-        joseph.smith@gmail.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        No
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        1337hax0r15
-      </div>
-      <div class="cell" data-title="Email">
-        hackerdude1000@aol.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        Yes
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        hairyharry19
-      </div>
-      <div class="cell" data-title="Email">
-        harryharry@gmail.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        Yes
-      </div>
-    </div>
-     %>
-  </div>
-   <% else %>
-    <h1 class="not-found">No Recently Added Found</h1>
-    <% end %>
+  <!-- /.container-fluid -->
 </div>
-
+<!-- /#page-wrapper -->

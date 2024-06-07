@@ -1,234 +1,44 @@
-<%= stylesheet_link_tag "adminIndex" %>
-  <h1>Generated Qr</h1>
-<div class="wrapper">
-    <% if @favourite %>
-  <div class="table">
-    <div class="row header">
-      <div class="cell">
-        Id
+<!-- Page Content -->
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <p id="notice" style="color: orange;"><%= notice %></p>
+      <div class="col-lg-12">
+        <h2 class="page-header" style="margin: 10px 0 15px !important;">Showing Generated QR</h2>
+        <%= link_to 'Back', admin_generated_qrs_path, class: "btn btn-primary", style: "margin-bottom: 15px;" %>
       </div>
-      <div class="cell">
-        Version Name
-      </div>
-      <div class="cell">
-       Version Code
-      </div>
-       <div class="cell">
-      Qr Code
-      </div>
-       <div class="cell">
-      Device Detail
-      </div>
-      <div class="cell">
-        Created At
-      </div>
-      <div class="cell">
-        Updated At
-      </div>
+      
+      <!-- Generated QR Details Table -->
+      <% if @favourite %>
+        <table class="table table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Version Name</th>
+              <th>Version Code</th>
+              <th>Qr Code</th>
+              <th>Device Detail</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @favourite.id %></td>
+              <td><%= @favourite.versionName %></td>
+              <td><%= @favourite.versionCode %></td>
+              <td><a href="/admin/recently_addeds/<%= @favourite.qr_code_id %>">Qr Code <%= @favourite.qr_code_id %></a></td>
+              <td><a href="/admin/device_details/<%= @favourite.device_detail_id %>">Device Detail <%= @favourite.device_detail_id %></a></td>
+              <td><%= @favourite.created_at %></td>
+              <td><%= @favourite.updated_at %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="col-lg-12">
+          <h1 class="not-found">No Favourite Found</h1>
+        </div>
+      <% end %>
     </div>
-    
-      <div class="cell" data-title="id">
-        <%= @favourite.id %>
-      </div>
-      <div class="cell" data-title="deviceName">
-        <%= @favourite.versionName %>
-      </div>
-       <div class="cell" data-title="deviceId">
-      <%= @favourite.versionCode %>
-      </div> 
-      <div class="cell" data-title="deviceId">
-      <a href="/admin/recently_addeds/<%= @favourite.qr_code_id %>">
-        Qr Code <%= @favourite.qr_code_id %>
-      </a>
-      </div>
-      <div class="cell" data-title="deviceId">
-      <a href="/admin/device_details/<%= @favourite.device_detail_id %>">
-        Device Detail <%= @favourite.device_detail_id %>
-      </a>
-      </div>
-      <div class="cell" data-title="securityToken">
-        <%= @favourite.created_at %>
-      </div>
-      <div class="cell" data-title="advertisingId">
-        <%= @favourite.updated_at %>
-      </div>
-   
   </div>
-<%#   
-  <div class="table">
-    
-    <div class="row header green">
-      <div class="cell">
-        Product
-      </div>
-      <div class="cell">
-        Unit Price
-      </div>
-      <div class="cell">
-        Quantity
-      </div>
-      <div class="cell">
-        Date Sold
-      </div>
-      <div class="cell">
-        Status
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        Solid oak work table
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $800
-      </div>
-      <div class="cell" data-title="Quantity">
-        10
-      </div>
-      <div class="cell" data-title="Date Sold">
-        03/15/2014
-      </div>
-      <div class="cell" data-title="Status">
-        Waiting for Pickup
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        Leather iPhone wallet
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $45
-      </div>
-      <div class="cell" data-title="Quantity">
-        120
-      </div>
-      <div class="cell" data-title="Date Sold">
-        02/28/2014
-      </div>
-      <div class="cell" data-title="Status">
-        In Transit
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        27" Apple Thunderbolt displays
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $1000
-      </div>
-      <div class="cell" data-title="Quantity">
-        25
-      </div>
-      <div class="cell" data-title="Date Sold">
-        02/10/2014
-      </div>
-      <div class="cell" data-title="Status">
-        Delivered
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Product">
-        Bose studio headphones
-      </div>
-      <div class="cell" data-title="Unit Price">
-        $60
-      </div>
-      <div class="cell" data-title="Quantity">
-        90
-      </div>
-      <div class="cell" data-title="Date Sold">
-        01/14/2014
-      </div>
-      <div class="cell" data-title="Status">
-        Delivered
-      </div>
-    </div>
-    
-  </div>
-  
-  <div class="table">
-    
-    <div class="row header blue">
-      <div class="cell">
-        Username
-      </div>
-      <div class="cell">
-        Email
-      </div>
-      <div class="cell">
-        Password
-      </div>
-      <div class="cell">
-        Active
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        ninjalug
-      </div>
-      <div class="cell" data-title="Email">
-        misterninja@hotmail.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        Yes
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        jsmith41
-      </div>
-      <div class="cell" data-title="Email">
-        joseph.smith@gmail.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        No
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        1337hax0r15
-      </div>
-      <div class="cell" data-title="Email">
-        hackerdude1000@aol.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        Yes
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="cell" data-title="Username">
-        hairyharry19
-      </div>
-      <div class="cell" data-title="Email">
-        harryharry@gmail.com
-      </div>
-      <div class="cell" data-title="Password">
-        ************
-      </div>
-      <div class="cell" data-title="Active">
-        Yes
-      </div>
-    </div>
-     %>
-  </div>
-   <% else %>
-    <h1 class="not-found">No Favourite Found</h1>
-    <% end %>
 </div>
-

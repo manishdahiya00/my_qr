@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/invite/:refCode" => "main#invite"
 
 
+  get "/admin/dashboard" => "admin/dashboard#index" 
   get "/admin" => "admin/login#new"
   post "/admin" => "admin/login#login"
   delete "/admin/logout" => "admin/login#logout"
@@ -18,7 +19,6 @@ Rails.application.routes.draw do
       resources :redeems
       resources :redeem_histories
       resources :user_details
-      root to: "device_details#index"
   end
 
   mount API::Base => "/"
