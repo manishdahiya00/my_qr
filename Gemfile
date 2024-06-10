@@ -67,3 +67,4 @@ group :test do
 end
 
 gem "grape", "~> 2.0"
+gem 'will_paginate', '~> 4.0'

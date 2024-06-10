@@ -100,6 +100,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= will_paginate @redeems %>
       <% else %>
         <p>No user redeems found.</p>
       <% end %>
@@ -127,6 +128,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= will_paginate @transactionHistories %>
       <% else %>
         <p>No user transaction history found.</p>
       <% end %>
