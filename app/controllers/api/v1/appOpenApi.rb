@@ -37,11 +37,11 @@ module API
             if @user
               @app = AppOpen.find_by(securityToken: params[:securityToken])
               @new_app_open = @app.update(
-                socialName: @user.socialName,
+                socialName: @user.socialName || "USER",
                 socialEmail: @user.socialEmail,
                 socialImgUrl:@user.socialImgUrl
               )
-              { status: 200, message: "Success", socialName: @app.socialName, socialEmail: @app.socialEmail,socialImgUrl: @app.socialImgUrl,appUrl:@app.app_url,forceUpdate:@app.forceUpdate}
+              { status: 200, message: "Success", socialName: @app.socialName, socialEmail: @app.socialEmail,socialImgUrl: @app.socialImgUrl,appUrl:@app.app_url || "https://play.google.com/store/apps/details?id=com.apps.scanbuddy",forceUpdate:@app.forceUpdate}
             else
             { status: 200, message: "No User Found", socialName: "" ,socialEmail: "",socialImgUrl: "",appUrl: "",forceUpdate:@app_open.forceUpdate}
             end
