@@ -60,7 +60,7 @@ module API
       "AZTEC" => IconType::AZTEC,
       "CONTACT INFO" => IconType::CONTACT_INFO,
       "EMAIL" => IconType::EMAIL,
-      "ISBN" => IconType::IBN,
+      "ISBN" => IconType::ISBN,
       "PHONE" => IconType::PHONE,
       "PRODUCT" => IconType::PRODUCT,
       "SMS" => IconType::SMS,
