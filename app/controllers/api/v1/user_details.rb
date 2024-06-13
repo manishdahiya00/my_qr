@@ -33,7 +33,7 @@ module API
               else
                 @deviceDetails = DeviceDetail.find_by(deviceId: params[:deviceId], advertisingId: params[:advertisingId])
               end
-              @user_detail = UserDetail.find_by(security_token:params[:security_token],socialEmail: params[:socialEmail],socialId: params[:socialId])
+              @user_detail = UserDetail.find_by(securityToken:params[:securityToken],socialEmail: params[:socialEmail],socialId: params[:socialId])
               if @user_detail.present?
                 {status:200,message:"Success",userId:@user_detail.id,securityToken: @deviceDetails.security_token}
               else
