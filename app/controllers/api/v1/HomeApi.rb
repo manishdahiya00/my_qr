@@ -60,7 +60,7 @@ module API
       "AZTEC" => IconType::AZTEC,
       "CONTACT INFO" => IconType::CONTACT_INFO,
       "EMAIL" => IconType::EMAIL,
-      "ISBN" => IconType::ISBN,
+      "ISBN" => IconType::IBN,
       "PHONE" => IconType::PHONE,
       "PRODUCT" => IconType::PRODUCT,
       "SMS" => IconType::SMS,
@@ -99,13 +99,7 @@ module API
               @userCoins = "0"
             end
             recentlyAddeds = []
-            DARK_COLOR = ["#2AAA8A", "#0096FF", "#FF69B4", "#FDDA0D"]
-            FADE_COLOR = ["#342AAA8A", "#1D0096FF", "#28FF69B4", "#25FDDA0D"]
-
             @recentlyAdded.each do |qr|
-              random_color = DARK_COLOR.sample
-              random_index = DARK_COLOR.index(random_color)
-
               if qr.qr_name == nil
                 icon = ICON_TYPE_MAP["UNKNOWN"].url
                 title = "UNKNOWN"
@@ -121,8 +115,6 @@ module API
                 createdAt:qr.created_at.strftime("%d/%m/%Y"),
                 qrType:qr.title,
                 icon: icon,
-                darkColor: random_color,
-                fadeColor: FADE_COLOR[random_index]
               }
             recentlyAddeds << qr_data
             end
