@@ -6,6 +6,8 @@ module API
       format :json
 
       resources :googleSignUp do
+        Rails.logger.info"API Params:#{params.inspect}"
+        
         desc "Google Sign Up Api"
         params do
           requires :deviceType, type: String, allow_blank: true
@@ -35,18 +37,8 @@ module API
               end
               @user_detail = UserDetail.find_by(socialEmail: params[:socialEmail],socialId: params[:socialId])
               if @user_detail.present?
-                puts "User Found"
-                puts "Securitt Token: #{params[:securityToken]}"
-                puts "Social Email: #{params[:socialEmail]}"
-                puts "Socila Id: #{params[:socialId]}"
- 
                 {status:200,message:"Success",userId:@user_detail.id,securityToken: @deviceDetails.security_token}
               else
-                puts "User Not FOund"
-                puts "User Found"
-                puts "Securitt Token: #{params[:securityToken]}"
-                puts "Social Email: #{params[:socialEmail]}"
-                puts "Socila Id: #{params[:socialId]}"
                 @user_details = UserDetail.create(
                     deviceType: params[:deviceType],
                     deviceId: params[:deviceId],

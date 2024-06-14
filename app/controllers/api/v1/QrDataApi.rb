@@ -73,6 +73,7 @@ module API
     }
 
       resources :qrHistory do
+        Rails.logger.info"API Params:#{params.inspect}"
         desc "Single Qr History Api"
         params do
           requires :deviceId, type: String, allow_blank: false

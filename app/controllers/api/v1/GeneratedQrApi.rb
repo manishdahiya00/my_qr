@@ -6,6 +6,7 @@ module API
       prefix :api
 
       resources :qrCodeData do
+        Rails.logger.info"API Params:#{params.inspect}"
         desc "Save Qr Code Data and Create History"
         params do
           requires :deviceId,type: String, allow_blank: false

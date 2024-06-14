@@ -6,6 +6,7 @@ module API
       format :json
 
       resources :addFavourites do
+        Rails.logger.info"API Params:#{params.inspect}"
         desc "Add Favourites API"
         params do
           requires :deviceId,type:String,allow_blank: false

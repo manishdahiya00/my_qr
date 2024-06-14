@@ -6,6 +6,7 @@ module API
       format :json
 
       resources :redeemSubmit do
+        Rails.logger.info"API Params:#{params.inspect}"
         params do
           requires :userId, type: String, allow_blank: false
           requires :securityToken, type: String, allow_blank: false

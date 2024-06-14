@@ -76,6 +76,7 @@ module API
 
 
       resources :scannerData do
+        Rails.logger.info"API Params:#{params.inspect}"
         desc "Create Qr Code History"
         params do
           requires :deviceId,type:String,allow_blank: false

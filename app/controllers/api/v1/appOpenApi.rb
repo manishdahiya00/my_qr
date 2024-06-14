@@ -6,6 +6,7 @@ module API
       version :v1
 
       resources :appOpen do
+        Rails.logger.info"API Params:#{params.inspect}"
         desc "App Open API"
         params do
           requires :deviceId, type: String, allow_blank: false

@@ -6,6 +6,7 @@ module API
       format :json
 
       resources :rewardList do
+        Rails.logger.info"API Params:#{params.inspect}"
         params do
           requires :deviceId,type:String,allow_blank: false
           requires :securityToken,type:String,allow_blank: false

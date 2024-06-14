@@ -6,6 +6,7 @@ module API
       format :json
 
       resources :defaultUser do
+        Rails.logger.info"API Params:#{params.inspect}"
         params do
           requires :versionName,type: String, allow_blank: false
           requires :versionCode,type: String, allow_blank: false
