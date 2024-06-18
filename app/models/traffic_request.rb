@@ -1,0 +1,2 @@
+class TrafficRequest < ApplicationRecord
+end

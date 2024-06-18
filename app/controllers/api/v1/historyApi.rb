@@ -41,6 +41,7 @@ module API
         GEO = IconType.new("https://scansbuddy.app/images/location.png")
         CALENDAR_EVENT = IconType.new("https://scansbuddy.app/images/calender.png")
         DRIVER_LICENSE = IconType.new("https://scansbuddy.app/images/driver-license.png")
+        PLAY_STORE_URL = IconType.new("https://scansbuddy.app/images/url.png")
       end
 
       ICON_TYPE_MAP = {
@@ -70,7 +71,8 @@ module API
       "WIFI" => IconType::WIFI,
       "GEO" => IconType::GEO,
       "CALENDAR EVENT" => IconType::CALENDAR_EVENT,
-      "DRIVER LICENSE" => IconType::DRIVER_LICENSE
+      "DRIVER LICENSE" => IconType::DRIVER_LICENSE,
+      "PLAY STORE URL" => IconType::PLAY_STORE_URL
     }
 
 
