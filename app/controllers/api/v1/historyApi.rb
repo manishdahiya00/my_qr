@@ -92,19 +92,19 @@ module API
         end
         post do
           begin
-            if params[:userId] == "2"
-              @deviceDetail = DeviceDetail.find_by(deviceId: "12345678",security_token: params[:securityToken])
-              @generated = RecentlyAdded.where(device_detail_id: @deviceDetail.id.to_s,qrType: "Generated").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
-              @scanned = RecentlyAdded.where(device_detail_id: @deviceDetail.id.to_s,qrType: "Scanned").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
-              @favourite = Favourite.where(device_detail_id: @deviceDetail.id.to_s)
-              @favourites = RecentlyAdded.where(id: @favourite.ids).select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
-            else
-              @device_details = DeviceDetail.find_by(deviceId: params[:deviceId],security_token: params[:securityToken])
+            # if params[:userId] == "2"
+              # @deviceDetail = DeviceDetail.find_by(deviceId: "12345678",security_token: params[:securityToken])
+              # @generated = RecentlyAdded.where(device_detail_id: @deviceDetail.id.to_s,qrType: "Generated").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
+              # @scanned = RecentlyAdded.where(device_detail_id: @deviceDetail.id.to_s,qrType: "Scanned").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
+              # @favourite = Favourite.where(device_detail_id: @deviceDetail.id.to_s)
+              # @favourites = RecentlyAdded.where(id: @favourite.ids).select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
+            # else
+              @device_details = DeviceDetail.find_by(deviceId: params[:deviceId])
               @generated = RecentlyAdded.where(device_detail_id: @device_details.id,qrType: "Generated").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
               @scanned = RecentlyAdded.where(device_detail_id: @device_details.id,qrType: "Scanned").select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
               @favourite = Favourite.where(device_detail_id: @device_details.id)
               @favourites = RecentlyAdded.where(id: @favourite.ids).select(:id,:title,:subtitle,:created_at,:qr_name).order("created_at DESC")
-            end
+            # end
             generated = []
            if @generated
             @generated.each do |qr|
@@ -174,7 +174,7 @@ module API
             if @user.present?
               @userCoins = @user.wallet_balance.to_s
             else
-              @userCoins = "0"
+              @userCoins = "500"
             end
             {status: 200,message:"Success",generated: generated || [],scanned: scanned || [],favourite: favourites || [],userCoins: @userCoins }
           end

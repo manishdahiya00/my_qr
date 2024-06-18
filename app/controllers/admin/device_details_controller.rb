@@ -9,6 +9,13 @@ module Admin
             @deviceDetail = DeviceDetail.find_by(id:params[:id])
             @qrCodes = RecentlyAdded.where(device_detail_id: @deviceDetail.id).paginate(:page => params[:page], :per_page => 10)
             @favourites = Favourite.where(device_detail_id: @deviceDetail.id).paginate(:page => params[:page], :per_page => 10)
+            @user_id = @deviceDetail.user_detail_id.split(",").last
+            @appOpen = AppOpen.where(deviceId: @deviceDetail.deviceId).paginate(:page => params[:page], :per_page => 10)
+            if @user_id.present?
+                @userDetail = UserDetail.find(@user_id)
+                @transactionHistories = @userDetail.transaction_histories.limit(20).order(id: :desc).paginate(:page => params[:page], :per_page => 10)
+                @redeems = @userDetail.redeems.limit(20).order(id: :desc).paginate(:page => params[:page], :per_page => 10)
+            end
         end
     end
 end

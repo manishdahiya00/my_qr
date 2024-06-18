@@ -5,9 +5,7 @@
       <p id="notice" style="color:orange;"><%= notice %></p>
       <div class="col-lg-12">
         <h2 class="page-header" style="margin: 10px 0 15px !important;">Showing Device Details</h2>
-          <%= link_to 'Back', admin_device_details_path ,class: "btn btn-primary" ,style: "margin-bottom:15px;"%></b>
       </div>
-      
       <!-- Device Details Table -->
       <table class="table table-responsive table-bordered">
         <thead>
@@ -58,6 +56,152 @@
         </tbody>
       </table>
       
+      <!-- User Details Table -->
+      <h3>User Details</h3>
+            <% if @userDetail.present? %>
+              <table class="table table-responsive table-bordered">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Social Image</th>
+                    <th>Social Id</th>
+                    <th>Social Name</th>
+                    <th>Social Email</th>
+                    <th>Wallet Balance</th>
+                    <th>Ref Code</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td><a href="/admin/user_details/<%= @userDetail.id %>"><%= @userDetail.id %></a></td>
+                      <td><img style="width:20px;" src="<%=@userDetail.try(:socialImgUrl)%>" onerror="this.onerror=null;this.src='https://cdn.pixabay.com/photo/2014/03/24/17/21/wrong-295503_640.png';" /></td>
+                      <td><%= @userDetail.socialId %></td>
+                      <td><%= @userDetail.socialName %></td>
+                      <td><%= @userDetail.socialEmail %></td>
+                      <td><%= @userDetail.wallet_balance %></td>
+                      <td><%= @userDetail.refCode %></td>
+                      <td><%= @userDetail.created_at %></td>
+                      <td><%= @userDetail.updated_at %></td> 
+                    </tr>
+                </tbody>
+              </table>
+              <%= will_paginate @qrCodes %>
+            <% else %>
+              <p>No QR Codes found.</p>
+            <% end %>
+
+            <h3>App Opens</h3>
+      <% if @appOpen.present? %>
+        <table class="table table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Security Token</th>
+              <th>Social Name</th>
+              <th>Social Email</th>
+              <th>Version Name</th>
+              <th>Version Code</th>
+              <th>Force Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @appOpen.each do |app| %>
+              <tr>
+                <td><%= app.id %></td>
+                <td><%= app.securityToken %></td>
+                <td><%= app.socialName %></td>
+                <td><%= app.socialEmail %></td>
+                <td><%= app.versionName %></td>
+                <td><%= app.versionCode %></td>
+                <td><%= app.forceUpdate %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @appOpen %>
+      <% else %>
+        <p>No app open found.</p>
+      <% end %>
+      
+
+
+            <h3>User Redeems</h3>
+      <% if @redeems.present? %>
+        <table class="table table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Mobile Number</th>
+              <th>Coins</th>
+              <th>Amount</th>
+              <th>Pay Type</th>
+              <th>Status</th>
+              <th>Pay Vendor</th>
+              <th>Trans Vendor</th>
+              <th>Pay Id</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @redeems.each do |redeem| %>
+              <tr>
+                <td><%= redeem.id %></td>
+                <td><%= redeem.mobileNumber %></td>
+                <td><%= redeem.payCoins %></td>
+                <td><%= redeem.payAmount %></td>
+                <td><%= redeem.payType %></td>
+                <td>
+                  <% if redeem.status == "PENDING" %>
+                    <p class="text-danger"><%= redeem.status %></p>
+                  <% elsif redeem.status == "PROCESSING" %>
+                    <p class="text-warning"><%= redeem.status %></p>
+                  <% else %>
+                    <p class="text-success"><%= redeem.status %></p>
+                  <% end %>
+                </td>
+                <td><%= redeem.payVendor %></td>
+                <td><%= redeem.transVendor %></td>
+                <td><%= redeem.payId %></td>
+                <td ><a href="/admin/redeems/<%= redeem.id %>/edit"><button class="btn btn-primary">Edit</button></a></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @redeems %>
+      <% else %>
+        <p>No user redeems found.</p>
+      <% end %>
+
+       <h3>User Transaction History</h3>
+      <% if @transactionHistories.present? %>
+        <table class="table table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Subtitle</th>
+              <th>Coins</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @transactionHistories.each do |history| %>
+              <tr>
+                <td><%= history.id %></td>
+                <td><%= history.title %></td>
+                <td><%= history.subtitle %></td>
+                <td><%= history.coins %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @transactionHistories %>
+      <% else %>
+        <p>No user transaction history found.</p>
+      <% end %>
+      
+
       <!-- QR Codes Table -->
       <h3>QR Codes</h3>
       <% if @qrCodes.present? %>
@@ -74,7 +218,7 @@
           <tbody>
             <% @qrCodes.each do |qr| %>
               <tr>
-                <td><%= qr.id %></td>
+                <td><a href="/admin/recently_addeds/<%= qr.id %>"><%= qr.id %></a></td>
                 <td><%= qr.title %></td>
                 <td><%= qr.subtitle.truncate(50) %></td>
                 <td><%= qr.created_at %></td>

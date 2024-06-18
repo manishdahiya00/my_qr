@@ -94,11 +94,11 @@ module API
 
         post do
           begin
-            if params[:userId] == "2"
-              @device_detail = DeviceDetail.find_by(deviceId:"12345678",security_token: params[:securityToken])
-            else
-              @device_detail = DeviceDetail.find_by(deviceId:params[:deviceId],security_token: params[:securityToken])
-            end
+            # if params[:userId] == "2"
+              # @device_detail = DeviceDetail.find_by(deviceId:"12345678",security_token: params[:securityToken])
+            # else
+              @device_detail = DeviceDetail.find_by(deviceId:params[:deviceId])
+            # end
             @recently_added =  @device_detail.recently_added.create(
               title:params[:qrType],
               subtitle:params[:data],

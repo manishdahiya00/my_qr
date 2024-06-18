@@ -3,11 +3,10 @@
   <div class="container-fluid">
     <div class="row">
       <p id="notice" style="color:orange;"><%= notice %></p>
-      <div class="col-lg-12">
-        <h2 class="page-header" style="margin: 10px 0 15px !important;">User Details</h2>
-          <%= link_to 'Back', admin_user_details_path, class: "btn btn-primary", style: "margin-bottom: 15px;" %></b>
+      <div class="col-lg-12 d-flex flex-row">
+        <h2 class="page-header" style="margin: 10px 0 15px !important;">User Details  
+        </h2>
       </div>
-      
       <!-- User Details Table -->
       <table class="table table-responsive table-bordered">
         <thead>
@@ -37,7 +36,7 @@
             <th>Social Id</th>
             <th>Social Name</th>
             <th>Social Email</th>
-            <th>Social Image Url</th>
+            <th>Wallet Balance</th>
             <th>Ref Code</th>
           </tr>
         </thead>
@@ -46,11 +45,7 @@
             <td><%= @userDetail.socialId %></td>
             <td><%= @userDetail.socialName %></td>
             <td><%= @userDetail.socialEmail %></td>
-            <td>
-              <% if @userDetail.socialImgUrl.present? %>
-                <a href="<%= @userDetail.socialImgUrl %>"><%= @userDetail.socialImgUrl[0, 50] + "..." %></a>
-              <% end %>
-            </td>
+            <td><%= @userDetail.wallet_balance %></td>
             <td><%= @userDetail.refCode %></td>
           </tr>
         </tbody>

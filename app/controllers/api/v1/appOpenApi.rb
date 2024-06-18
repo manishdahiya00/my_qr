@@ -34,17 +34,21 @@ module API
               )
               { status: 200, message: "Success",socialName: @app_open.socialName, socialEmail: @app_open.socialEmail,socialImgUrl: @app_open.socialImgUrl,appUrl:@app_open.app_url,forceUpdate:@app_open.forceUpdate }
             end
-            @user = UserDetail.find_by(securityToken:params[:securityToken])
-            if @user
+            if params[:userId] == ""
+               { status: 200, message: "No User Found", socialName: "" ,socialEmail: "",socialImgUrl: "",appUrl: "",forceUpdate:@app_open.forceUpdate}
+            else
+              @user = UserDetail.find_by(securityToken:params[:securityToken])
+              if @user
               @app = AppOpen.find_by(securityToken: params[:securityToken])
               @new_app_open = @app.update(
                 socialName: @user.socialName || "USER",
                 socialEmail: @user.socialEmail,
                 socialImgUrl:@user.socialImgUrl
               )
-              { status: 200, message: "Success", socialName: @app.socialName, socialEmail: @app.socialEmail,socialImgUrl: @app.socialImgUrl,appUrl:@app.app_url || "https://play.google.com/store/apps/details?id=com.apps.scanbuddy",forceUpdate:@app.forceUpdate}
+              { status: 200, message: "Success",socialName: @app.socialName, socialEmail: @app.socialEmail,socialImgUrl: @app.socialImgUrl,appUrl:@app.app_url || "https://play.google.com/store/apps/details?id=com.apps.scanbuddy",forceUpdate:@app.forceUpdate}
             else
             { status: 200, message: "No User Found", socialName: "" ,socialEmail: "",socialImgUrl: "",appUrl: "",forceUpdate:@app_open.forceUpdate}
+            end
             end
           rescue => e
             { message: "Error", status: 500, error: e }

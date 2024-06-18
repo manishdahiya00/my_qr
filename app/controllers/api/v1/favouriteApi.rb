@@ -20,11 +20,11 @@ module API
         end
         post do
           begin
-            if params[:userId] == "2"
-              @device_details = DeviceDetail.find_by(deviceId:"12345678",security_token: params[:securityToken])
-            else
-              @device_details = DeviceDetail.find_by(deviceId:params[:deviceId],security_token: params[:securityToken])
-            end
+            # if params[:userId] == "2"
+              # @device_details = DeviceDetail.find_by(deviceId:"12345678",security_token: params[:securityToken])
+            # else
+              @device_details = DeviceDetail.find_by(deviceId:params[:deviceId])
+            # end
             # @generated_qr = GeneratedQr.find(params[:qrCodeId])
             # @scanned_qr = QrDatum.find(params[:qrCodeId])
             @qr = RecentlyAdded.find(params[:qrCodeId])

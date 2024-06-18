@@ -68,3 +68,4 @@ end
 
 gem "grape", "~> 2.0"
 gem 'will_paginate', '~> 4.0'
+gem 'google-id-token', git: 'https://github.com/google/google-id-token.git'

@@ -20,7 +20,7 @@ module API
             @user = UserDetail.find_by(id:params[:userId])
             if @user.present?
               @transactios = @user.transaction_histories.select(:id,:title,:subtitle,:coins).order("created_at DESC")
-              {status:200,message:"Success",coins: @user.wallet_balance.to_s,conversion: (@user.wallet_balance / 10.to_f).to_s,withdrawlLimit:"500",transactionHistory: @transactios || []}
+              {status:200,message:"Success",coins: @user.wallet_balance.to_s,conversion: (@user.wallet_balance / 100.to_f).to_s,withdrawlLimit:"500",transactionHistory: @transactios || []}
             else
             {status:500,message:"No User Found"}
             end

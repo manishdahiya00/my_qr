@@ -23,11 +23,11 @@ module API
 
         post do
           begin
-            if params[:userId] == "2"
-              @device_details = DeviceDetail.find_by(deviceId:"12345678",security_token: params[:securityToken])
-            else
-              @device_details = DeviceDetail.find_by(deviceId:params[:deviceId],security_token: params[:securityToken])
-            end
+            # if params[:userId] == "2"
+              # @device_details = DeviceDetail.find_by(deviceId:"12345678",security_token: params[:securityToken])
+            # else
+              @device_details = DeviceDetail.find_by(deviceId:params[:deviceId])
+            # end
 
             @recently_added = @device_details.recently_added.create(
                 title:params[:qrType],
@@ -47,8 +47,7 @@ module API
                 codeImage: codeImage,
                 qr_name:params[:qrName]
               )
-
-            {status:200,message:"Success",qrId: @generated_qr.id}
+            {status:200,message:"Success",qrId: @generated_qr.id,codeImage: @generated_qr.codeImage.url}
             rescue Exception => e
             {status:500,message:"Internal Server Error",error:e}
           end

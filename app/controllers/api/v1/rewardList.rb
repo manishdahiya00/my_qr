@@ -16,11 +16,11 @@ module API
         end
         post do
           begin
-            if params[:userId] == "2"
+            # if params[:userId] == "2"
+              # @user = UserDetail.find(params[:userId])
+            # else
               @user = UserDetail.find(params[:userId])
-            else
-              @user = UserDetail.find(params[:userId])
-            end
+            # end
             @payment_methods = [
               {
                 id:"1",
@@ -28,7 +28,7 @@ module API
                 category:"Cashback",
                 icon: "https://img.icons8.com/?size=256&id=68067&format=png",
                 payoutValues: ["500","1000","2000"],
-                payoutRewards: ["5000","10000","20000"],
+                payoutRewards: ["50000","100000","200000"],
               },
               {
                 id:"2",
@@ -36,7 +36,7 @@ module API
                 category:"Cashback",
                 icon: "https://img.icons8.com/?size=256&id=13611&format=png",
                 payoutValues: ["200","800","900"],
-                payoutRewards: ["2000","8000","9000"],
+                payoutRewards: ["20000","80000","90000"],
               },
               {
                 id:"3",
@@ -44,10 +44,10 @@ module API
                 category:"Game",
                 icon: "https://img.icons8.com/?size=256&id=73814&format=png",
                 payoutValues: ["400","1500","3000"],
-                payoutRewards: ["4000","15000","30000"],
+                payoutRewards: ["40000","150000","300000"],
               }
             ]
-            {status:200,message:"Success",coins: @user.wallet_balance.to_s,conversion:(@user.wallet_balance / 10.to_f).to_s,conversionAmt:(@user.wallet_balance/10.to_f).to_f,withdrawlLimit:"500",paytmMethods: @payment_methods}
+            {status:200,message:"Success",coins: @user.wallet_balance.to_s,conversion:(@user.wallet_balance / 100.to_f).to_s,conversionAmt:(@user.wallet_balance/100.to_f).to_f,withdrawlLimit:"500",paytmMethods: @payment_methods}
           rescue Exception => e
             {status:500,message:"Internal Server Error",error:e}
           end

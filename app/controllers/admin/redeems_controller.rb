@@ -4,6 +4,10 @@ module Admin
 
     layout "admin"
 
+    def index
+      @redeems = Redeem.all.paginate(page: params[:page],per_page: 10)
+    end
+
     def edit
       @redeem = Redeem.find(params[:id])
     end

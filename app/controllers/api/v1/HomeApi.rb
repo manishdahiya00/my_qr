@@ -88,18 +88,18 @@ module API
         post do
           begin
             @appBanners = AppBanner.all.select(:id, :imgUrl, :actionUrl).where(:status => true)
-            if params[:userId] == "2"
-              @deviceDetail = DeviceDetail.find_by(deviceId: "12345678",security_token: params[:securityToken])
+            # if params[:userId] == "2"
+              # @deviceDetail = DeviceDetail.find_by(deviceId: "12345678",security_token: params[:securityToken])
+              # @recentlyAdded = RecentlyAdded.where(device_detail_id: @deviceDetail.id).order(created_at: :desc).limit(10)
+            # else
+              @deviceDetail = DeviceDetail.find_by(deviceId: params[:deviceId])
               @recentlyAdded = RecentlyAdded.where(device_detail_id: @deviceDetail.id).order(created_at: :desc).limit(10)
-            else
-              @deviceDetail = DeviceDetail.find_by(deviceId: params[:deviceId], security_token: params[:securityToken])
-              @recentlyAdded = RecentlyAdded.where(device_detail_id: @deviceDetail.id).order(created_at: :desc).limit(10)
-            end
+            # end
             @user = UserDetail.find_by(id:params[:userId])
             if @user.present?
               @userCoins = @user.wallet_balance.to_s
             else
-              @userCoins = "0"
+              @userCoins = "500"
             end
             recentlyAddeds = []
             @recentlyAdded.each do |qr|

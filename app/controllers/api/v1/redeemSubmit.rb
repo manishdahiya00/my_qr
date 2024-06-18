@@ -20,11 +20,11 @@ module API
         end
         post do
           begin
-            if params[:userId] == "2"
-              @user = UserDetail.find_by(id:"2",securityToken: params[:securityToken])
-            else
-              @user = UserDetail.find_by(id:params[:userId],securityToken:params[:securityToken])
-            end
+            # if params[:userId] == "2"
+              # @user = UserDetail.find_by(id:"2",securityToken: params[:securityToken])
+            # else
+              @user = UserDetail.find_by(id:params[:userId])
+            # end
             if @user
               @coins = params[:payCoins].to_i
               if @coins > @user.wallet_balance
