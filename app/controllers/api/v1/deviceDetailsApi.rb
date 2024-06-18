@@ -29,7 +29,7 @@ module API
 
        post do
          begin
-          @device_detail = DeviceDetail.find_by(advertisingId: params[:advertisingId])
+          @device_detail = DeviceDetail.find_by(deviceId: params[:deviceId])
           unless @device_detail.present?
             @security_token = SecureRandom.uuid
             @device_detail = DeviceDetail.create(
@@ -67,7 +67,7 @@ module API
        end
        post do
          begin
-           user = UserDetail.find_by(id:params[:userId],securityToken: params[:securityToken])
+           user = UserDetail.find_by(id:params[:userId])
            if user
              inviteFbUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=facebook"
              inviteWhatsappUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=whatsapp"

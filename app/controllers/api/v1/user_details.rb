@@ -31,14 +31,18 @@ module API
           post do
             begin
               if params[:userId] == "2"
-                @deviceDetails = DeviceDetail.find_by(deviceId: "12345678",security_token: params[:securityToken])
+                @deviceDetails = DeviceDetail.find_by(deviceId: "12345678")
+                puts @deviceDetails
               else
-                @deviceDetails = DeviceDetail.find_by(deviceId: params[:deviceId], advertisingId: params[:advertisingId])
+                @deviceDetails = DeviceDetail.find_by(deviceId: params[:deviceId])
+                puts @deviceDetails
               end
               @user_detail = UserDetail.find_by(socialEmail: params[:socialEmail],socialId: params[:socialId])
               if @user_detail.present?
+                puts @user_detail
                 {status:200,message:"Success",userId:@user_detail.id,securityToken: @deviceDetails.security_token}
               else
+                puts "Not found"
                 @user_details = UserDetail.create(
                     deviceType: params[:deviceType],
                     deviceId: params[:deviceId],
@@ -62,6 +66,7 @@ module API
                     securityToken: @deviceDetails.security_token,
                     refCode: SecureRandom.hex(6)
                   )
+                puts @user_details
                 if @deviceDetails.user_detail_id.presence == nil
                   new_user_id = "#{@user_details.id}"
                 else
