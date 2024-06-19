@@ -5,7 +5,7 @@ module Admin
     layout "admin"
 
     def index
-      @redeems = Redeem.all.paginate(page: params[:page],per_page: 10)
+      @redeems = Redeem.all.order(id: :desc).paginate(page: params[:page],per_page: 10)
     end
 
     def edit

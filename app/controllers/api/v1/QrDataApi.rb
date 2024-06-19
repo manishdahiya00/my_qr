@@ -108,7 +108,7 @@ module API
                 id: @qr.id,
                 title: title,
                 subtitle: @qr.subtitle,
-                createdAt: @qr.created_at.strftime("%d/%m/%y"),
+                createdAt: @qr.created_at.strftime("%d/%m/%y %I:%M %p"),
                 icon: icon
               }
               @isFavourite = Favourite.find_by(qr_code_id: params[:qrId]).present?
@@ -126,7 +126,7 @@ module API
                 id: @qr.id,
                 title: title,
                 subtitle: @qr.codeData,
-                createdAt: @qr.created_at.strftime("%d/%m/%y"),
+                createdAt: @qr.created_at.strftime("%d/%m/%y %I:%M %p"),
                 icon: icon
               }
                 @image = @qr.codeImage.url

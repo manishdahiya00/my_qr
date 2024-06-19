@@ -7,8 +7,8 @@ module Admin
         end
         def show
             @deviceDetail = DeviceDetail.find_by(id:params[:id])
-            @qrCodes = RecentlyAdded.where(device_detail_id: @deviceDetail.id).paginate(:page => params[:page], :per_page => 10)
-            @favourites = Favourite.where(device_detail_id: @deviceDetail.id).paginate(:page => params[:page], :per_page => 10)
+            @qrCodes = RecentlyAdded.where(device_detail_id: @deviceDetail.id).order(id: :desc).paginate(:page => params[:page], :per_page => 10)
+            @favourites = Favourite.where(device_detail_id: @deviceDetail.id).order(id: :desc).paginate(:page => params[:page], :per_page => 10)
             @user_id = @deviceDetail.user_detail_id.split(",").last
             @appOpen = AppOpen.where(deviceId: @deviceDetail.deviceId).paginate(:page => params[:page], :per_page => 10)
             if @user_id.present?

@@ -43,7 +43,7 @@ module API
                 )
                 @user.transaction_histories.create(
                   title: "Withdrawal",
-                  subtitle: DateTime.now.strftime("%d/%m/%y"),
+                  subtitle: DateTime.now.strftime("%d/%m/%y %I:%M %p"),
                   coins: @user.wallet_balance
                 )
                 {status:200,message:"Success",coins: @user.wallet_balance}

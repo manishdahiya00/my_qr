@@ -119,7 +119,7 @@ module API
                 icon = ICON_TYPE_MAP[@recently_added.qr_name].url
                 title = @recently_added.qr_name
               end
-            {status:200,message:"Success",createdAt:@qrData.created_at.strftime("%d/%m/%y"),id:@recently_added.id,icon: icon}
+            {status:200,message:"Success",createdAt:@qrData.created_at.strftime("%d/%m/%y %I:%M %p"),id:@recently_added.id,icon: icon}
           rescue Exception => e
             {status:500,message:"Internal Server Error",error:e}
           end

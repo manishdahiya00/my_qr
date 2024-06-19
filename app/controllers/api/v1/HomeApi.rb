@@ -115,7 +115,7 @@ module API
                 id:qr.id,
                 title:title,
                 subtitle:qr.subtitle,
-                createdAt:qr.created_at.strftime("%d/%m/%Y"),
+                createdAt:qr.created_at.strftime("%d/%m/%Y %I:%M %p"),
                 qrType:qr.title,
                 icon: icon,
               }

@@ -56,7 +56,7 @@ module API
           post do
             begin
               
-              @source_ip = request.ip
+              @source_ip = request.remote_ip
               # if params[:userId] == "2"
                 # @deviceDetails = DeviceDetail.find_by(deviceId: "12345678")
                 # puts @deviceDetails
