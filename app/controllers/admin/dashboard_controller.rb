@@ -1,5 +1,6 @@
 module Admin
-	class DashboardController < ApplicationController
+	class DashboardController < Admin::AdminController
+           before_action :authenticate_user!
 		layout "admin"
 	def index
 		@deviceDetail = DeviceDetail.count
