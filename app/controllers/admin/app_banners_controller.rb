@@ -39,9 +39,7 @@ module Admin
     end
 
     def destroy
-      puts params[:id]
       @appBanner = AppBanner.find_by(id: params[:id])
-      puts @appBanner
       @appBanner.destroy
       redirect_to admin_app_banners_path
     end
