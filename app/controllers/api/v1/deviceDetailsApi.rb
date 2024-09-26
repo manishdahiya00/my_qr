@@ -6,7 +6,7 @@ module API
       version :v1
 
      resources :deviceDetails do
-      Rails.logger.info"API Params:#{params.inspect}"
+      #Rails.logger.info"API Params:#{params.inspect}"
        desc "Device details API"
        params do
          requires :deviceId, type: String, allow_blank: false
@@ -46,11 +46,15 @@ module API
               utmTerm:params[:utmTerm],
               referrerUrl: params[:ReferrerUrl],
               security_token: @security_token)
-          {status:200,message:"Success",security_token:@security_token}
+            #{status:200,message:"Success",security_token:@security_token}
+            require "uri"
+            require "net/http"                    
+            uri = URI("https://performxcel.com/record?vendor=MGApps&app=ScanBuddy&clickid=#{params[:utmMedium]}&adv_sub=#{params[:ReferrerUrl]}")
+            x = Net::HTTP.get(uri)
           end
-          {status:200,message:"Success",security_token:@device_detail.security_token,deviceId:@device_detail.deviceId}
+          {status:200, message:"Success", security_token: @device_detail.security_token, deviceId: @device_detail.deviceId}
          rescue Exception=>e
-              {message: "Error", status: 500,error:e}
+           {message: "Error", status: 500, error:e}
          end
          end
      end
