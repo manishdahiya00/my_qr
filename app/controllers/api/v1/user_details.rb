@@ -30,8 +30,7 @@ module API
       end
 
       resources :googleSignUp do
-        Rails.logger.info "API Params:#{params.inspect}"
-
+        #Rails.logger.info "API Params:#{params.inspect}"
         desc "Google Sign Up Api"
         params do
           requires :deviceType, type: String, allow_blank: true

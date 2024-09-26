@@ -79,7 +79,7 @@ module API
 
 
       resources :history do
-        Rails.logger.info"API Params:#{params.inspect}"
+        #Rails.logger.info"API Params:#{params.inspect}"
         desc "Full History Api"
         params do
 
