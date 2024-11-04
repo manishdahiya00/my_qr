@@ -86,8 +86,8 @@ module API
                   utmCampaign: params[:utmCampaign],
                   referrerUrl: params[:referrerUrl],
                   device_detail_id: @deviceDetails.id,
-                  securityToken: @deviceDetails.security_token,
-                  refCode: SecureRandom.hex(6),
+                  securityToken: @deviceDetails.security_token,                  
+                  refCode: SecureRandom.hex(4).upcase,
                   source_ip: source_ip,
                 )
                 if @deviceDetails.user_detail_id.presence == nil

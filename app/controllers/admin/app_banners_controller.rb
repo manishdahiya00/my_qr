@@ -5,7 +5,7 @@ module Admin
     layout "admin"
 
     def index
-      @appBanners = AppBanner.all.order("id DESC").paginate(:page => params[:page], :per_page => 10)
+      @appBanners = AppBanner.all.order("id DESC").paginate(:page => params[:page], :per_page => PER_PAGE)
     end
 
     def show

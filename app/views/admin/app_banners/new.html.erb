@@ -1,3 +1,5 @@
+<div id="page-wrapper">      
+<h2 class="page-header" style="margin: 10px 0 15px !important;">App Banners</h2>
 <div class="container"> 
 <%= form_with(model: @appBanner, url: admin_app_banners_path) do |form| %>
   <% if @appBanner.errors.any? %>
@@ -12,7 +14,7 @@
   <% end %>
   <!-- /.row -->
     <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-10">
       <div class="panel panel-default">
         <div class="panel-heading">
           Basic Form Elements
@@ -49,4 +51,5 @@
   </div>
   <!-- /.row -->
 <% end %>
+</div>
 </div>

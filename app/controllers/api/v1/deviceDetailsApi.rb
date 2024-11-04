@@ -77,7 +77,7 @@ module API
              inviteWhatsappUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=whatsapp"
              inviteTelegramUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=telegram"
              inviteOtherUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=other"
-             inviteText = "Share, Invite Friends and Get Free Cash and Diamonds.\n ► Get 5 ScanBuddy amount instant as your Friend Register on ScanBuddy App."
+             inviteText = "Share, Invite Friends and Get Free Cash and Diamonds.\n ► Get 500 ScanBuddy Coins instant as your Friend Register on ScanBuddy App.\n ► Get a Chance to Earn upto 10,000 ScanBuddy Coins for Top Inviters.\n ► Sponsorship for YouTube, WhatsApp, Telegram and Facebook Content Creator Available!"             
              {message: "Success", status: 200, inviteFbUrl: inviteFbUrl,inviteWhatsappUrl: inviteWhatsappUrl,inviteTelegramUrl: inviteTelegramUrl,inviteOtherUrl: inviteOtherUrl,inviteText: inviteText,refCode:user.refCode}
            else
              {message: "Invalid User", status: 500}

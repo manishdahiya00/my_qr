@@ -2,12 +2,11 @@ Rails.application.routes.draw do
 
   root "main#index"
   get "/invite/:refCode" => "main#invite"
-
-
-  get "/admin/dashboard" => "admin/dashboard#index" 
+  
   get "/admin" => "admin/login#new"
   post "/admin" => "admin/login#login"
   delete "/admin/logout" => "admin/login#logout"
+  get "/admin/dashboard" => "admin/dashboard#index"  
   namespace :admin do
       resources :app_banners
       resources :app_opens
@@ -19,6 +18,8 @@ Rails.application.routes.draw do
       resources :redeems
       resources :redeem_histories
       resources :user_details
+      get '/search-user' => 'user_details#index'
+      get '/search-device' => 'device_details#index'
   end
 
   mount API::Base => "/"
