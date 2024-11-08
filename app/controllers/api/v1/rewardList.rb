@@ -24,30 +24,32 @@ module API
             @payment_methods = [
               {
                 id:"1",
-                name:"Paytm",
+                name:"UPIPay",
                 category:"Cashback",
-                icon: "https://img.icons8.com/?size=256&id=68067&format=png",
-                payoutValues: ["500","1000","2000"],
-                payoutRewards: ["50000","100000","200000"],
+                #icon: "https://img.icons8.com/?size=256&id=68067&format=png",
+                icon: "https://cdn.iconscout.com/icon/free/png-256/free-upi-logo-icon-download-in-svg-png-gif-file-formats--unified-payments-interface-payment-money-transfer-logos-icons-1747946.png",
+                payoutValues: ['50','100','250','500','750','1000'],
+                payoutRewards: ["5000","10000","25000","50000","75000","100000"],
               },
               {
                 id:"2",
                 name:"PayPal",
                 category:"Cashback",
                 icon: "https://img.icons8.com/?size=256&id=13611&format=png",
-                payoutValues: ["200","800","900"],
-                payoutRewards: ["20000","80000","90000"],
+                payoutValues: ["200","400","600","800","1000"],
+                payoutRewards: ["2000","4000","6000","8000","10000"],
               },
               {
                 id:"3",
                 name:"PUBG",
                 category:"Game",
                 icon: "https://img.icons8.com/?size=256&id=73814&format=png",
-                payoutValues: ["400","1500","3000"],
-                payoutRewards: ["40000","150000","300000"],
+                payoutValues: ['60','325','660','1800','3850','8100'],
+                payoutRewards: ['7500','3800','7500','19000','380000','750000'],
               }
             ]
-            {status:200,message:"Success",coins: @user.wallet_balance.to_s,conversion:(@user.wallet_balance / 100.to_f).to_s,conversionAmt:(@user.wallet_balance/100.to_f).to_f,withdrawlLimit:"500",paytmMethods: @payment_methods}
+            {status:200,message:"Success",coins: @user.wallet_balance.to_s, conversion:(@user.wallet_balance / 100.to_f).to_s,
+              conversionAmt:(@user.wallet_balance/100.to_f).to_f, withdrawlLimit:"500", paytmMethods: @payment_methods}
           rescue Exception => e
             {status:500,message:"Internal Server Error",error:e}
           end
