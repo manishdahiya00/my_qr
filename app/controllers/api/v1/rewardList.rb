@@ -27,7 +27,7 @@ module API
                 name:"UPIPay",
                 category:"Cashback",
                 #icon: "https://img.icons8.com/?size=256&id=68067&format=png",
-                icon: "https://play-lh.googleusercontent.com/kvMSUs3kp3QX265zCfYBR6n5oPyTeoJtPY9aPLyJmzltDPmVVS7GViuqYct63fbPVPB1=w256-h256-rw",
+                icon: "https://play-lh.googleusercontent.com/kvMSUs3kp3QX265zCfYBR6n5oPyTeoJtPY9aPLyJmzltDPmVVS7GViuqYct63fbPVPB1=w240-h240-rw",
                 payoutValues: ['50','100','250','500','750','1000'],
                 payoutRewards: ["5000","10000","25000","50000","75000","100000"],
               },
