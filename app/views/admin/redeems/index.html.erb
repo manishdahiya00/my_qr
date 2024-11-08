@@ -37,8 +37,8 @@
                     <p class="text-success"><%= redeem.status %></p>
                   <% end %>
                 </td>
-                <td><%= redeem.created_at %></td>
-                <td><%= redeem.updated_at %></td>
+                <td><%= redeem.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+                <td><%= redeem.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
                 <td ><a href="/admin/redeems/<%= redeem.id %>/edit"><button class="btn btn-primary">Edit</button></a></td>
               </tr>
             <% end %>

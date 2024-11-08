@@ -57,7 +57,7 @@ module API
               }
             ]
             {status:200,message:"Success",coins: @user.wallet_balance.to_s, conversion:(@user.wallet_balance / 100.to_f).to_s,
-              conversionAmt:(@user.wallet_balance/100.to_f).to_f, withdrawlLimit:"500", paytmMethods: @payment_methods}
+              conversionAmt:(@user.wallet_balance/100.to_f).to_f, withdrawlLimit:"250", paytmMethods: @payment_methods}
           rescue Exception => e
             {status:500,message:"Internal Server Error",error:e}
           end

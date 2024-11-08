@@ -32,8 +32,8 @@
                 ✔️
               <% end %>
             </td>
-            <td><%= @appBanner.created_at %></td>
-            <td><%= @appBanner.updated_at %></td>
+            <td><%= @appBanner.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+            <td><%= @appBanner.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
             <td class="app-banner-action" style="display: flex;gap:5px;">
               <%= link_to 'Edit', edit_admin_app_banner_path(@appBanner), class: "btn btn-primary" %>
               <%= button_to 'Delete', admin_app_banner_path(@appBanner), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>

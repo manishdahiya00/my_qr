@@ -24,8 +24,8 @@
                 <td><%= recent.title %></td>
                 <td><%= recent.subtitle.truncate(50) %></td>
                 <td>Device Detail <%= recent.device_detail_id %></td>
-                <td><%= recent.created_at %></td>
-                <td><%= recent.updated_at %></td>
+                <td><%= recent.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+                <td><%= recent.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
                 <td>
                   <%= link_to 'Show', admin_recently_added_path(recent) %>
                 </td>
