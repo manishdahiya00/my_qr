@@ -28,8 +28,8 @@
               <td><%= @recentlyAdded.title %></td>
               <td><%= @recentlyAdded.subtitle %></td>
               <td><%= @recentlyAdded.qrType %></td>
-              <td><%= @recentlyAdded.created_at %></td>
-              <td><%= @recentlyAdded.updated_at %></td>
+              <td><%= @recentlyAdded.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+              <td><%= @recentlyAdded.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
             </tr>
           </tbody>
         </table>

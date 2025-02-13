@@ -28,8 +28,8 @@
               <td><%= @favourite.versionCode %></td>
               <td><a href="/admin/recently_addeds/<%= @favourite.qr_code_id %>">Qr Code <%= @favourite.qr_code_id %></a></td>
               <td><a href="/admin/device_details/<%= @favourite.device_detail_id %>">Device Detail <%= @favourite.device_detail_id %></a></td>
-              <td><%= @favourite.created_at %></td>
-              <td><%= @favourite.updated_at %></td>
+              <td><%= @favourite.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+              <td><%= @favourite.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
             </tr>
           </tbody>
         </table>

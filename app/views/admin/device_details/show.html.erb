@@ -82,8 +82,8 @@
                       <td><%= @userDetail.socialEmail %></td>
                       <td><%= @userDetail.wallet_balance %></td>
                       <td><%= @userDetail.refCode %></td>
-                      <td><%= @userDetail.created_at %></td>
-                      <td><%= @userDetail.updated_at %></td> 
+                      <td><%= @userDetail.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+                      <td><%= @userDetail.updated_at.strftime("%d/%m/%y %I:%M %p") %></td> 
                     </tr>
                 </tbody>
               </table>
@@ -221,8 +221,8 @@
                 <td><a href="/admin/recently_addeds/<%= qr.id %>"><%= qr.id %></a></td>
                 <td><%= qr.title %></td>
                 <td><%= qr.subtitle.truncate(50) %></td>
-                <td><%= qr.created_at %></td>
-                <td><%= qr.updated_at %></td>
+                <td><%= qr.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+                <td><%= qr.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
               </tr>
             <% end %>
           </tbody>
@@ -251,8 +251,8 @@
                 <td><%= fav.qr_code_id %></td>
                 <td><%= fav.versionName %></td>
                 <td><%= fav.versionCode %></td>
-                <td><%= fav.created_at %></td>
-                <td><%= fav.updated_at %></td>
+                <td><%= fav.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+                <td><%= fav.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
               </tr>
             <% end %>
           </tbody>

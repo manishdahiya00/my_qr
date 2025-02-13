@@ -28,8 +28,8 @@
               <td><%= @generatedQr.codeData %></td>
               <td><%= @generatedQr.versionName %></td>
               <td><%= @generatedQr.versionCode %></td>
-              <td><%= @generatedQr.created_at %></td>
-              <td><%= @generatedQr.updated_at %></td>
+              <td><%= @generatedQr.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+              <td><%= @generatedQr.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
             </tr>
           </tbody>
         </table>

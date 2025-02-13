@@ -28,8 +28,8 @@
               <td><a href="/admin/device_details/<%= @qrData.device_detail_id %>">Device Detail <%= @qrData.device_detail_id %></a></td>
               <td><%= @qrData.versionName %></td>
               <td><%= @qrData.versionCode %></td>
-              <td><%= @qrData.created_at %></td>
-              <td><%= @qrData.updated_at %></td>
+              <td><%= @qrData.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+              <td><%= @qrData.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
             </tr>
           </tbody>
         </table>

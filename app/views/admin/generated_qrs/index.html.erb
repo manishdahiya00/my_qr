@@ -23,8 +23,8 @@
                 <td><%= qr.id %></td>
                 <td><%= qr.codeData[0,60] + "..." %></td>
                 <td>Device Detail <%= qr.device_detail_id %></td>
-                <td><%= qr.created_at %></td>
-                <td><%= qr.updated_at %></td>
+                <td><%= qr.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+                <td><%= qr.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
                 <td>
                   <%= link_to 'Show', admin_generated_qr_path(qr) %>
                 </td>

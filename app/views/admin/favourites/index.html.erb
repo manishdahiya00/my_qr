@@ -21,8 +21,8 @@
               <tr>
                 <td><%= fav.id %></td>
                 <td>Device Detail <%= fav.device_detail_id %></td>
-                <td><%= fav.created_at %></td>
-                <td><%= fav.updated_at %></td>
+                <td><%= fav.created_at.strftime("%d/%m/%y %I:%M %p") %></td>
+                <td><%= fav.updated_at.strftime("%d/%m/%y %I:%M %p") %></td>
                 <td>
                   <%= link_to 'Show', admin_favourite_path(fav) %>
                 </td>
