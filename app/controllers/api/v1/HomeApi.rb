@@ -75,7 +75,7 @@ module API
     }
 
       resources :home do
-        #Rails.logger.info"API Params:#{params.inspect}"
+        Rails.logger.info"API Params:#{params.inspect}"
         desc "Api for Home Screen"
         params do
           requires :deviceId, type: String, allow_blank: false

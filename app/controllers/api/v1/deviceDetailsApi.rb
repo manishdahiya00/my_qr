@@ -6,7 +6,7 @@ module API
       version :v1
 
      resources :deviceDetails do
-      #Rails.logger.info"API Params:#{params.inspect}"
+       Rails.logger.info"API Params:#{params.inspect}"
        desc "Device details API"
        params do
          requires :deviceId, type: String, allow_blank: false
@@ -59,7 +59,7 @@ module API
          end
      end
      resources :appInvite do
-       #Rails.logger.info"API Params:#{params.inspect}"
+       Rails.logger.info"API Params:#{params.inspect}"
        desc "App Invite API"
        params do
          requires :deviceId, type: String, allow_blank: false
