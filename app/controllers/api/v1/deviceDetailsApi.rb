@@ -73,11 +73,11 @@ module API
          begin
            user = UserDetail.find_by(id:params[:userId])
            if user
-             inviteFbUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=facebook"
-             inviteWhatsappUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=whatsapp"
-             inviteTelegramUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=telegram"
-             inviteOtherUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=other"
-             inviteText = "Share, Invite Friends and Get Free Cash and Diamonds.\n ► Get 500 ScanBuddy Coins instant as your Friend Register on ScanBuddy App.\n ► Get a Chance to Earn upto 10,000 ScanBuddy Coins for Top Inviters.\n ► Sponsorship for YouTube, WhatsApp, Telegram and Facebook Content Creator Available!"             
+             inviteFbUrl = "https://scansbuddy.app/invite/#{user.refCode}/?by=facebook"              
+             inviteWhatsappUrl = "Download ScanBuddy App and get free MaxDiamonds, PubgUC, Paypal/Paytm cash upto Rs.500 for Offers, Referral & Games. Click here: https://scansbuddy.app/invite/#{user.refCode}/?by=whatsapp"          
+             inviteTelegramUrl = "Download ScanBuddy App and get free MaxDiamonds, PubgUC, Paypal/Paytm cash upto Rs.500 for Offers, Referral & Games. Click here: https://scansbuddy.app/invite/#{user.refCode}/?by=telegram"
+             inviteOtherUrl = "Download ScanBuddy App and get free MaxDiamonds, PubgUC, Paypal/Paytm cash upto Rs.500 for Offers, Referral & Games. Click here: https://scansbuddy.app/invite/#{user.refCode}/?by=social"
+             inviteText = "Share, Invite Friends and Get Free Cash and Diamonds.\n ► Get 500 ScanBuddy Coins instant as your Friend Register on ScanBuddy App.\n ► Get a Chance to Earn upto 10,000 ScanBuddy Coins for Top Inviters.\n ► Sponsorship for YouTube, WhatsApp, Telegram and Facebook Content Creator Available!"
              {message: "Success", status: 200, inviteFbUrl: inviteFbUrl,inviteWhatsappUrl: inviteWhatsappUrl,inviteTelegramUrl: inviteTelegramUrl,inviteOtherUrl: inviteOtherUrl,inviteText: inviteText,refCode:user.refCode}
            else
              {message: "Invalid User", status: 500}
